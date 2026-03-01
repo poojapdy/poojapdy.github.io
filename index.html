@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pooja Pisharody</title>
+  <title>Finance & Creative Strategy</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" />
@@ -95,30 +95,49 @@
       gap: 32px;
     }
 
-    /* Animated star */
-    .star {
-      display: inline-block;
-      font-size: 36px;
-      line-height: 1;
-      color: #c8d4a0;
-      cursor: default;
-      transition: transform 0.3s ease, color 0.3s ease;
-      width: fit-content;
-      animation: slowspin 8s linear infinite;
-    }
-    .star:hover {
-      color: #ddd8c4;
-      animation: fastspin 0.6s linear infinite;
-    }
+    /* Option A — Floating Cluster */
+.star-wrap {
+  position: relative;
+  width: 130px;
+  height: 90px;
+  display: inline-block;
+}
 
-    @keyframes slowspin {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
-    }
-    @keyframes fastspin {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
-    }
+.star {
+  font-size: 36px;
+  color: #c8d4a0;
+  display: inline-block;
+  animation: slowspin 8s linear infinite;
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  cursor: default;
+}
+
+.star:hover { color: #ddd8c4; }
+
+.speck {
+  position: absolute;
+  color: #c8d4a0;
+  animation: floatDrift linear infinite;
+  pointer-events: none;
+}
+.speck:nth-child(2) { font-size:14px; top:4px;  left:10px;  animation-duration:3.1s; opacity:0.6; }
+.speck:nth-child(3) { font-size:10px; top:60px; left:5px;   animation-duration:4.4s; opacity:0.4; }
+.speck:nth-child(4) { font-size:16px; top:0px;  left:80px;  animation-duration:3.7s; opacity:0.7; }
+.speck:nth-child(5) { font-size:8px;  top:65px; left:95px;  animation-duration:5.2s; opacity:0.35; }
+.speck:nth-child(6) { font-size:12px; top:28px; left:108px; animation-duration:2.9s; opacity:0.5; }
+
+@keyframes slowspin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes floatDrift {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
 
     /* Headline block */
     .headline {
@@ -170,7 +189,15 @@
     .bottom-section {
       margin-top: 48px;
     }
-
+<!-- Floating cluster star -->
+<div class="star-wrap">
+  <span class="star">✦</span>
+  <span class="speck">✧</span>
+  <span class="speck">·</span>
+  <span class="speck">✶</span>
+  <span class="speck">·</span>
+  <span class="speck">✦</span>
+</div>
     /* CHANGE THIS: update email */
     .send-message {
       font-size: 18px;
@@ -211,7 +238,7 @@
 
     <!-- CHANGE THIS: swap for your photo when ready
          Example: <img src="photo.jpg" alt="Pooja" style="width:100%;display:block;" /> -->
-    <div class="photo-box">
+    <img src="photo.jpg" alt="Pooja" style="width:100%;display:block;" />
       <span class="photo-placeholder">Photo coming soon</span>
     </div>
 
@@ -238,20 +265,18 @@
 
       <!-- CHANGE THIS: update headline lines if you want different wording -->
       <div class="headline">
-        <div class="headline-name">Pooja Pisharody</div>
-        <div class="headline-line">Finance and Creative Strategy</div>
-        <div class="headline-line">Design, Music, and Technology</div>
+        <div class="headline-line">Design, Music, Technology</div>
       </div>
 
       <!-- Experience list -->
       <!-- CHANGE THIS: update roles/companies as needed -->
       <div class="exp-list">
         <div class="exp-item">
-          <span class="exp-role">Financial Strategy</span>
-          <span class="exp-co">Amazon Tech</span>
+          <span class="exp-role">Finance, Emerging Tech</span>
+          <span class="exp-co">Amazon</span>
         </div>
         <div class="exp-item">
-          <span class="exp-role">Lead Strategy, Music Festivals</span>
+          <span class="exp-role">Strategy, Music Festivals</span>
           <span class="exp-co">Live Nation</span>
         </div>
         <div class="exp-item">

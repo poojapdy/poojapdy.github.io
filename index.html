@@ -28,6 +28,7 @@
       min-height: 100vh;
     }
 
+    /* ── LEFT ── */
     .left {
       border-right: 1px solid #2a3a2c;
       padding: 48px 40px 48px 48px;
@@ -36,7 +37,6 @@
       gap: 24px;
     }
 
-    /* CHANGE THIS: update photo filename if it changes */
     .photo-circle {
       width: 100%;
       aspect-ratio: 1;
@@ -44,7 +44,6 @@
       overflow: hidden;
       border: 1px solid #2a3a2c;
     }
-
     .photo-circle img {
       width: 100%;
       height: 100%;
@@ -75,6 +74,7 @@
     .social-icon:hover { opacity: 1; border-color: #6a9070; }
     .social-icon svg { width: 16px; height: 16px; fill: #ddd8c4; }
 
+    /* ── RIGHT ── */
     .right {
       padding: 56px 64px;
       display: flex;
@@ -83,6 +83,34 @@
       gap: 32px;
     }
 
+    /* ── NAV ── */
+    .site-nav {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-link {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #4a6a4e;
+      cursor: pointer;
+      transition: color 0.2s;
+      padding-bottom: 2px;
+      border: none;
+      border-bottom: 1px solid transparent;
+      background: none;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .nav-link:hover { color: #ddd8c4; }
+    .nav-link.active { color: #c8d4a0; border-bottom-color: #c8d4a0; }
+
+    /* ── PAGES ── */
+    .page { display: none; flex-direction: column; gap: 32px; }
+    .page.active { display: flex; }
+
+    /* ── HOME PAGE ── */
     .top-section {
       display: flex;
       flex-direction: column;
@@ -124,18 +152,13 @@
       from { transform: rotate(0deg); }
       to   { transform: rotate(360deg); }
     }
-
     @keyframes floatDrift {
       0%   { transform: translateY(0px); }
       50%  { transform: translateY(-5px); }
       100% { transform: translateY(0px); }
     }
 
-    .headline {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
+    .headline { display: flex; flex-direction: column; gap: 6px; }
 
     .headline-name {
       font-size: clamp(32px, 4vw, 48px);
@@ -203,6 +226,135 @@
       color: #8a9e8d;
     }
 
+    /* ── WORK PAGE ── */
+    .work-list { display: flex; flex-direction: column; gap: 0; }
+
+    .work-item {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      padding: 24px 0;
+      border-bottom: 1px solid #2a3a2c;
+      text-decoration: none;
+      color: inherit;
+      transition: opacity 0.2s;
+      cursor: pointer;
+    }
+    .work-item:first-child { border-top: 1px solid #2a3a2c; }
+    .work-item:hover { opacity: 0.65; }
+
+    /* mini slide thumbnail rendered in HTML */
+    .work-thumb {
+      width: 160px;
+      height: 90px;
+      flex-shrink: 0;
+      background: #0f0f0f;
+      border: 1px solid #2a3a2c;
+      overflow: hidden;
+      display: flex;
+      position: relative;
+    }
+
+    .thumb-l {
+      width: 55%;
+      background: #0a0a0a;
+      padding: 10px 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      border-right: 2px solid #E31837;
+    }
+    .thumb-tag {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 4.5px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #E31837;
+    }
+    .thumb-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 7px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.25;
+    }
+
+    .thumb-r {
+      width: 45%;
+      background: #141414;
+      padding: 8px 6px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 5px;
+    }
+    .thumb-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .thumb-stat:last-child { border-bottom: none; padding-bottom: 0; }
+    .thumb-num {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      color: #E31837;
+      line-height: 1;
+    }
+    .thumb-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 4px;
+      color: rgba(255,255,255,0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* placeholder thumb for coming soon */
+    .work-thumb-placeholder {
+      width: 160px;
+      height: 90px;
+      flex-shrink: 0;
+      background: #1a1a1a;
+      border: 1px solid #2a3a2c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .work-thumb-placeholder span {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #2a3a2c;
+    }
+
+    .work-info { display: flex; flex-direction: column; gap: 5px; }
+
+    .work-co {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #4a6a4e;
+    }
+    .work-title-text {
+      font-family: 'EB Garamond', serif;
+      font-size: 19px;
+      font-style: italic;
+      color: #ddd8c4;
+      line-height: 1.3;
+    }
+    .work-arrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      color: #2a3a2c;
+      margin-top: 4px;
+    }
+
+    /* ── RESPONSIVE ── */
     @media (max-width: 860px) {
       .site-wrap { grid-template-columns: 1fr; }
       .left {
@@ -215,9 +367,10 @@
         gap: 16px;
       }
       .photo-circle { width: 120px; }
-      .left-name { font-size: 20px; }
+      .left-name { font-size: 20px; text-align: left; }
       .left-socials { margin-top: 0; }
       .right { padding: 36px 28px; }
+      .work-thumb, .work-thumb-placeholder { width: 100px; height: 56px; }
     }
   </style>
 </head>
@@ -225,65 +378,138 @@
 
 <div class="site-wrap">
 
+  <!-- ── LEFT ── -->
   <aside class="left">
-
-    <!-- CHANGE THIS: update filename if photo changes -->
     <div class="photo-circle">
       <img src="poojappp.jpg" alt="Pooja" />
     </div>
-
     <div class="left-name">Pooja Pisharody</div>
-
     <div class="left-socials">
-      <!-- CHANGE THIS: update href if LinkedIn URL changes -->
       <a href="https://linkedin.com/in/poojapisharody" target="_blank" class="social-icon" title="LinkedIn">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
         </svg>
       </a>
     </div>
-
   </aside>
 
+  <!-- ── RIGHT ── -->
   <main class="right">
 
-    <div class="top-section">
+    <!-- NAV -->
+    <nav class="site-nav">
+      <button class="nav-link active" onclick="showPage('home', this)">Info</button>
+      <button class="nav-link" onclick="showPage('work', this)">Work</button>
+    </nav>
 
-      <div class="star-wrap">
-        <span class="star">✦</span>
-        <span class="speck">✧</span>
-        <span class="speck">·</span>
-        <span class="speck">✶</span>
-        <span class="speck">·</span>
-        <span class="speck">✦</span>
-      </div>
+    <!-- ── HOME PAGE ── -->
+    <div class="page active" id="page-home">
+      <div class="top-section">
 
-      <!-- CHANGE THIS: update headline lines -->
-      <div class="headline">
-        <div class="headline-name">Finance & Creative Strategy</div>
-        <div class="headline-line">Design, Music, & Technology</div>
-      </div>
-
-      <!-- CHANGE THIS: update roles and companies -->
-      <div class="timeline">
-        <div class="tl-item">
-          <span class="tl-co">Amazon — New York, NY</span>
-          <span class="tl-role">Finance — Emerging Tech</span>
+        <div class="star-wrap">
+          <span class="star">✦</span>
+          <span class="speck">✧</span>
+          <span class="speck">·</span>
+          <span class="speck">✶</span>
+          <span class="speck">·</span>
+          <span class="speck">✦</span>
         </div>
-        <div class="tl-item">
-          <span class="tl-co">Live Nation — Austin, TX</span>
-          <span class="tl-role">Strategy — Music Festivals</span>
-        </div>
-        <div class="tl-item">
-          <span class="tl-co">SMBC — New York, NY</span>
-          <span class="tl-role">Investment Banking — Tech</span>
-        </div>
-      </div>
 
+        <div class="headline">
+          <div class="headline-name">Finance & Creative Strategy</div>
+          <div class="headline-line">Design, Music, & Technology</div>
+        </div>
+
+        <div class="timeline">
+          <div class="tl-item">
+            <span class="tl-co">Amazon</span>
+            <span class="tl-role">Finance — Emerging Tech</span>
+          </div>
+          <div class="tl-item">
+            <span class="tl-co">Live Nation</span>
+            <span class="tl-role">Strategy — Music Festivals</span>
+          </div>
+          <div class="tl-item">
+            <span class="tl-co">SMBC</span>
+            <span class="tl-role">Investment Banking</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── WORK PAGE ── -->
+    <div class="page" id="page-work">
+
+      <div class="work-list">
+
+        <!-- LIVE NATION — links to the case study file -->
+        <a href="livenation-casestudy.html" class="work-item">
+          <div class="work-thumb">
+            <div class="thumb-l">
+              <div class="thumb-tag">Live Nation / C3 Presents</div>
+              <div class="thumb-title">What 28 Festivals Taught Me About Growth</div>
+            </div>
+            <div class="thumb-r">
+              <div class="thumb-stat">
+                <div class="thumb-num">28</div>
+                <div class="thumb-label">Festivals</div>
+              </div>
+              <div class="thumb-stat">
+                <div class="thumb-num">$7M+</div>
+                <div class="thumb-label">Cost savings</div>
+              </div>
+              <div class="thumb-stat">
+                <div class="thumb-num">2 Yrs</div>
+                <div class="thumb-label">Strategy</div>
+              </div>
+            </div>
+          </div>
+          <div class="work-info">
+            <div class="work-co">Live Nation — C3 Presents</div>
+            <div class="work-title-text">What 28 Music Festivals Taught Me About the Gap Between Gut Feel and Growth</div>
+            <div class="work-arrow">View case study →</div>
+          </div>
+        </a>
+
+        <!-- AMAZON — coming soon -->
+        <div class="work-item" style="cursor:default; opacity:0.4;">
+          <div class="work-thumb-placeholder">
+            <span>Coming soon</span>
+          </div>
+          <div class="work-info">
+            <div class="work-co">Amazon Devices</div>
+            <div class="work-title-text">The Lifetime Value Problem in Consumer Hardware</div>
+            <div class="work-arrow" style="color:#2a3a2c;">In progress</div>
+          </div>
+        </div>
+
+        <!-- SMBC — coming soon -->
+        <div class="work-item" style="cursor:default; opacity:0.4;">
+          <div class="work-thumb-placeholder">
+            <span>Coming soon</span>
+          </div>
+          <div class="work-info">
+            <div class="work-co">SMBC</div>
+            <div class="work-title-text">Why Healthcare-Biotech Is the Most Underfinanced Sector in Private Placement</div>
+            <div class="work-arrow" style="color:#2a3a2c;">In progress</div>
+          </div>
+        </div>
+
+      </div>
     </div>
 
   </main>
 </div>
+
+<script>
+  function showPage(name, btn) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
+    document.getElementById('page-' + name).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
 
 </body>
 </html>

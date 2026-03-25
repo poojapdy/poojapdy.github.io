@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Finance & Creative Strategy</title>
+  <title>Pooja Pisharody</title>
+  <link rel="canonical" href="https://poojap.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@200;300;400&display=swap" rel="stylesheet" />
@@ -110,7 +111,6 @@
     .tl-co { font-family: 'DM Sans', sans-serif; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #4a6a4e; }
     .tl-role { font-family: 'EB Garamond', serif; font-size: 16px; font-style: italic; color: #8a9e8d; }
 
-    /* WORK PAGE */
     .work-list { display: flex; flex-direction: column; gap: 0; }
 
     .work-item {
@@ -122,7 +122,6 @@
     .work-item:first-child { border-top: 1px solid #2a3a2c; }
     .work-item:hover { opacity: 0.65; }
 
-    /* BofA row — no hover dim */
     .work-item-bofa {
       display: flex; align-items: center; gap: 28px;
       padding: 24px 0; border-bottom: 1px solid #2a3a2c;
@@ -266,7 +265,7 @@
           </div>
         </a>
 
-        <!-- BANK OF AMERICA — no hover dim, PNG fits correctly -->
+        <!-- BANK OF AMERICA -->
         <div class="work-item-bofa" onclick="togglePDF()">
           <div style="display:flex; align-items:center; gap:28px; width:100%;">
             <div class="work-thumb" style="background:linear-gradient(135deg,#d6e8f5 0%,#eaf4fb 100%); border-color:#c8dde8; align-items:center; justify-content:center; flex-direction:column; gap:4px; overflow:hidden; position:relative;">
@@ -284,13 +283,8 @@
               <div class="work-arrow" id="bofa-label">View UI/UX case study ↓</div>
             </div>
           </div>
-          <!-- PNG displayed as full-width image, not iframe, so it fits correctly -->
           <div id="bofa-pdf" style="display:none; width:100%; margin-top:20px;">
-            <img
-              src="bofa-casestudy.png"
-              style="width:100%; height:auto; display:block; border:1px solid #2a3a2c;"
-              alt="Bank of America Case Study"
-            />
+            <img src="bofa-casestudy.png" style="width:100%; height:auto; display:block; border:1px solid #2a3a2c;" alt="Bank of America Case Study" />
           </div>
         </div>
 
@@ -306,6 +300,9 @@
     document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
     document.getElementById('page-' + name).classList.add('active');
     btn.classList.add('active');
+    // update URL cleanly without index.html
+    const url = name === 'work' ? '/#work' : '/';
+    history.pushState(null, '', url);
   }
 
   function togglePDF() {
@@ -316,9 +313,21 @@
       label.textContent = 'Collapse ↑';
     } else {
       pdf.style.display = 'none';
-      label.textContent = 'Expand ↓';
+      label.textContent = 'View UI/UX case study ↓';
     }
   }
+
+  // Handle direct URL routing — opens Work tab if URL is /#work or /work
+  (function() {
+    const hash = window.location.hash;
+    const path = window.location.pathname;
+    if (hash === '#work' || path === '/work' || path === '/work/') {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
+      document.getElementById('page-work').classList.add('active');
+      document.querySelector('[onclick*="work"]').classList.add('active');
+    }
+  })();
 </script>
 
 </body>

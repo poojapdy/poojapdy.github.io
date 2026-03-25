@@ -152,7 +152,7 @@
   .industry-card { background: white; padding: 5%; display: flex; flex-direction: column; gap: 8px; border-top: 3px solid var(--red); }
   .industry-card-num { font-size: 0.75vw; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red); font-weight: 500; }
   .industry-card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.4vw; font-weight: 700; color: var(--dark); line-height: 1.2; }
-  .industry-card-body { font-size: 1vw; color: #555; line-height: 1.65; font-weight: 300; }
+  .industry-card- { font-size: 1vw; color: #555; line-height: 1.65; font-weight: 300; }
 
   /* ── SLIDE 3 ── */
   .s3 { background: var(--dark2); flex-direction: column; padding: 6% 8%; }
@@ -162,7 +162,7 @@
   .problem-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 6% 5%; display: flex; flex-direction: column; gap: 10px; }
   .problem-icon { width: 2vw; height: 2vw; background: var(--red); display: flex; align-items: center; justify-content: center; font-size: 1vw; margin-bottom: 4px; }
   .problem-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.4vw; font-weight: 700; color: var(--white); line-height: 1.2; }
-  .problem-body { font-size: 1vw; color: rgba(255,255,255,0.85); line-height: 1.7; font-weight: 300; }
+  .problem- { font-size: 1vw; color: rgba(255,255,255,0.85); line-height: 1.7; font-weight: 300; }
 
   /* ── SLIDE 4 ── */
   .s4 { background: var(--red); flex-direction: column; justify-content: center; align-items: center; padding: 8% 12%; text-align: center; }
@@ -177,14 +177,14 @@
   .approach-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--red); }
   .approach-num { font-family: 'Barlow Condensed', sans-serif; font-size: 3vw; font-weight: 700; color: rgba(227,24,55,0.15); line-height: 1; }
   .approach-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.3vw; font-weight: 700; color: var(--dark); line-height: 1.2; }
-  .approach-body { font-size: 1vw; color: #555; line-height: 1.65; font-weight: 300; }
+  .approach- { font-size: 1vw; color: #555; line-height: 1.65; font-weight: 300; }
 
   /* ── SLIDE 6 ── */
   .s6 { background: var(--dark); flex-direction: row; align-items: stretch; }
   .s6-left { width: 40%; background: var(--red); display: flex; flex-direction: column; justify-content: center; padding: 8% 7%; }
   .s6-left-eyebrow { font-size: 0.75vw; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 6%; }
   .s6-left-title { font-family: 'Barlow Condensed', sans-serif; font-size: 3vw; font-weight: 700; color: var(--white); line-height: 1.1; }
-  .s6-left-body { font-size: 0.85vw; color: rgba(255,255,255,0.75); font-weight: 300; line-height: 1.7; margin-top: 5%; }
+  .s6-left- { font-size: 0.85vw; color: rgba(255,255,255,0.75); font-weight: 300; line-height: 1.7; margin-top: 5%; }
   .s6-right { width: 60%; padding: 6% 7%; display: flex; flex-direction: column; justify-content: center; gap: 4%; }
   .impact-row { display: flex; align-items: center; gap: 5%; padding-bottom: 4%; border-bottom: 1px solid rgba(255,255,255,0.07); }
   .impact-row:last-child { border-bottom: none; padding-bottom: 0; }
@@ -197,7 +197,7 @@
   .next-card { background: var(--dark); padding: 6% 5%; display: flex; flex-direction: column; gap: 10px; }
   .next-num { font-size: 0.75vw; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red); font-weight: 500; }
   .next-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.3vw; font-weight: 700; color: var(--white); line-height: 1.2; }
-  .next-body { font-size: 1vw; color: rgba(255,255,255,0.5); line-height: 1.65; font-weight: 300; }
+  .next- { font-size: 1vw; color: rgba(255,255,255,0.5); line-height: 1.65; font-weight: 300; }
 
   /* ── SLIDE 8 ── */
   .s8 { background: var(--dark); flex-direction: column; justify-content: center; align-items: center; padding: 8% 14%; text-align: center; position: relative; }
@@ -215,6 +215,7 @@
 </style>
 </head>
 <body>
+ <a href="index.html" style="position:fixed; top:24px; left:24px; z-index:200; font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:400; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.35); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.85)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">← Back</a>
 <div class="deck">
 
   <!-- SLIDE 1 -->
@@ -429,6 +430,9 @@
     if (e.key === 'ArrowRight' && current < total) changeSlide(1);
     if (e.key === 'ArrowLeft' && current > 1) changeSlide(-1);
   });
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') window.location.href = 'index.html#work';
+});
 </script>
 </body>
 </html>

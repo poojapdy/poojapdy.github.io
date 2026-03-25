@@ -24,7 +24,6 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ── SLIDE WRAPPER ── */
   .deck { width: 100%; }
 
   .slide {
@@ -36,7 +35,6 @@
     page-break-after: always;
   }
 
-  /* ── NAVIGATION ── */
   .nav {
     position: fixed;
     bottom: 32px;
@@ -79,15 +77,10 @@
     text-align: center;
   }
 
-  .slide-wrapper {
-    display: none;
-    width: 100%;
-  }
+  .slide-wrapper { display: none; width: 100%; }
   .slide-wrapper.active { display: block; }
 
-  /* ══════════════════════════════
-     SLIDE 1 — COVER
-  ══════════════════════════════ */
+  /* ── SLIDE 1 ── */
   .s1 {
     background: var(--dark);
     flex-direction: row;
@@ -131,10 +124,7 @@
     margin-bottom: 4%;
   }
 
-  .s1-title em {
-    font-style: italic;
-    color: var(--red);
-  }
+  .s1-title em { font-style: italic; color: var(--red); }
 
   .s1-sub {
     font-size: 1vw;
@@ -156,28 +146,28 @@
   .s1-stats {
     display: flex;
     flex-direction: column;
-    gap: 3%;
+    gap: 2%;  /* reduced from 3% to prevent overflow */
   }
 
   .s1-stat {
     display: flex;
     flex-direction: column;
     gap: 2px;
-    padding-bottom: 2.5%;
+    padding-bottom: 2%;  /* reduced from 2.5% */
     border-bottom: 1px solid rgba(255,255,255,0.08);
   }
   .s1-stat:last-child { border-bottom: none; }
 
   .s1-stat-num {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 2.8vw;
+    font-size: 2.6vw;  /* reduced from 2.8vw */
     font-weight: 700;
     color: var(--red);
     line-height: 1;
   }
 
   .s1-stat-label {
-    font-size: 0.8vw;
+    font-size: 0.75vw;  /* slightly reduced */
     color: rgba(255,255,255,0.4);
     font-weight: 300;
     letter-spacing: 0.05em;
@@ -195,9 +185,7 @@
     text-transform: uppercase;
   }
 
-  /* ══════════════════════════════
-     SLIDE 2 — THE INDUSTRY
-  ══════════════════════════════ */
+  /* ── SLIDE 2 ── */
   .s2 {
     background: var(--cream);
     color: var(--dark);
@@ -267,9 +255,7 @@
     font-weight: 300;
   }
 
-  /* ══════════════════════════════
-     SLIDE 3 — THE PROBLEM
-  ══════════════════════════════ */
+  /* ── SLIDE 3 ── */
   .s3 {
     background: var(--dark2);
     flex-direction: column;
@@ -327,9 +313,7 @@
     line-height: 1.1;
   }
 
-  /* ══════════════════════════════
-     SLIDE 4 — THE INSIGHT
-  ══════════════════════════════ */
+  /* ── SLIDE 4 ── */
   .s4 {
     background: var(--red);
     flex-direction: column;
@@ -367,17 +351,7 @@
     max-width: 65%;
   }
 
-  .s4-attr {
-    margin-top: 6%;
-    font-size: 0.75vw;
-    letter-spacing: 0.1em;
-    color: rgba(255,255,255,0.45);
-    text-transform: uppercase;
-  }
-
-  /* ══════════════════════════════
-     SLIDE 5 — THE APPROACH
-  ══════════════════════════════ */
+  /* ── SLIDE 5 ── */
   .s5 {
     background: var(--cream);
     color: var(--dark);
@@ -434,9 +408,7 @@
     font-weight: 300;
   }
 
-  /* ══════════════════════════════
-     SLIDE 6 — THE IMPACT
-  ══════════════════════════════ */
+  /* ── SLIDE 6 ── */
   .s6 {
     background: var(--dark);
     flex-direction: row;
@@ -511,9 +483,7 @@
     line-height: 1.5;
   }
 
-  /* ══════════════════════════════
-     SLIDE 7 — WHAT'S NEXT
-  ══════════════════════════════ */
+  /* ── SLIDE 7 ── */
   .s7 {
     background: var(--cream);
     color: var(--dark);
@@ -560,9 +530,7 @@
     font-weight: 300;
   }
 
-  /* ══════════════════════════════
-     SLIDE 8 — TAKEAWAY
-  ══════════════════════════════ */
+  /* ── SLIDE 8 ── */
   .s8 {
     background: var(--dark);
     flex-direction: column;
@@ -576,8 +544,7 @@
   .s8::before {
     content: '✦';
     position: absolute;
-    top: 6%;
-    right: 7%;
+    top: 6%; right: 7%;
     font-size: 1.5vw;
     color: var(--red);
     opacity: 0.4;
@@ -586,8 +553,7 @@
   .s8::after {
     content: '✦';
     position: absolute;
-    bottom: 6%;
-    left: 7%;
+    bottom: 6%; left: 7%;
     font-size: 1vw;
     color: var(--red);
     opacity: 0.25;
@@ -620,14 +586,6 @@
     margin: 0 auto 4%;
   }
 
-  .s8-sub {
-    font-size: 0.9vw;
-    color: rgba(255,255,255,0.4);
-    font-weight: 300;
-    letter-spacing: 0.05em;
-  }
-
-  /* ── FOOTER BAR ── */
   .footer-bar {
     position: absolute;
     bottom: 0; left: 0; right: 0;
@@ -637,8 +595,7 @@
 
   .footer-name {
     position: absolute;
-    bottom: 1.5%;
-    left: 3%;
+    bottom: 1.5%; left: 3%;
     font-size: 0.7vw;
     color: rgba(255,255,255,0.2);
     font-weight: 300;
@@ -648,8 +605,7 @@
 
   .footer-name-dark {
     position: absolute;
-    bottom: 1.5%;
-    left: 3%;
+    bottom: 1.5%; left: 3%;
     font-size: 0.7vw;
     color: rgba(0,0,0,0.2);
     font-weight: 300;
@@ -667,7 +623,7 @@
 
 <div class="deck">
 
-  <!-- ── SLIDE 1: COVER ── -->
+  <!-- SLIDE 1 -->
   <div class="slide-wrapper active" id="slide-1">
     <div class="slide s1">
       <div class="s1-left">
@@ -700,10 +656,10 @@
     </div>
   </div>
 
-  <!-- ── SLIDE 2: THE INDUSTRY ── -->
+  <!-- SLIDE 2 -->
   <div class="slide-wrapper" id="slide-2">
     <div class="slide s2">
-     <div style="position:absolute; top:4%; right:4%; font-family:'DM Sans',sans-serif; font-size:0.7vw; color:rgba(0,0,0,0.2); letter-spacing:0.08em; text-transform:uppercase; z-index:10;">Pooja Pisharody</div>
+      <div style="position:absolute; top:4%; right:4%; font-family:'DM Sans',sans-serif; font-size:0.7vw; color:rgba(0,0,0,0.2); letter-spacing:0.08em; text-transform:uppercase; z-index:10;">Pooja Pisharody</div>
       <div class="slide-header">
         <span class="slide-num">01</span>
         <div class="slide-title-light">Live Entertainment at Scale</div>
@@ -720,7 +676,7 @@
           <div class="industry-card-num">The Revenue Model</div>
           <div class="industry-card-title">Three Streams, Infinite Complexity</div>
           <div class="industry-card-body">
-Festival revenue runs on three revenue streams: ticket sales, sponsorships, and on-site spend. Each stream behaves differently across markets, lineup tiers, and economic conditions, requiring strategy, not just spreadsheets.
+            Festival revenue runs on three revenue streams: ticket sales, sponsorships, and on-site spend. Each stream behaves differently across markets, lineup tiers, and economic conditions, requiring strategy, not just spreadsheets.
           </div>
         </div>
         <div class="industry-card">
@@ -735,10 +691,10 @@ Festival revenue runs on three revenue streams: ticket sales, sponsorships, and 
     </div>
   </div>
 
-  <!-- ── SLIDE 3: THE PROBLEM ── -->
+  <!-- SLIDE 3 -->
   <div class="slide-wrapper" id="slide-3">
     <div class="slide s3">
-     <div style="position:absolute; top:4%; right:4%; font-family:'DM Sans',sans-serif; font-size:0.7vw; color:rgba(255,255,255,0.2); letter-spacing:0.08em; text-transform:uppercase; z-index:10;">Pooja Pisharody</div>
+      <div style="position:absolute; top:4%; right:4%; font-family:'DM Sans',sans-serif; font-size:0.7vw; color:rgba(255,255,255,0.2); letter-spacing:0.08em; text-transform:uppercase; z-index:10;">Pooja Pisharody</div>
       <div class="slide-header">
         <span class="slide-num" style="color: var(--red)">02</span>
         <div class="slide-title-dark">The Gut Feel Problem</div>
@@ -770,10 +726,10 @@ Festival revenue runs on three revenue streams: ticket sales, sponsorships, and 
     </div>
   </div>
 
-  <!-- ── SLIDE 4: THE INSIGHT ── -->
+  <!-- SLIDE 4 -->
   <div class="slide-wrapper" id="slide-4">
     <div class="slide s4">
-     <div style="position:absolute; top:4%; right:4%; font-family:'DM Sans',sans-serif; font-size:0.7vw; color:rgba(255,255,255,0.2); letter-spacing:0.08em; text-transform:uppercase; z-index:10;">Pooja Pisharody</div>
+      <div style="position:absolute; top:4%; right:4%; font-family:'DM Sans',sans-serif; font-size:0.7vw; color:rgba(255,255,255,0.2); letter-spacing:0.08em; text-transform:uppercase; z-index:10;">Pooja Pisharody</div>
       <div class="s4-eyebrow">The Core Insight</div>
       <div class="s4-quote">
         "Willingness to pay is the most honest signal in live entertainment."
@@ -782,13 +738,12 @@ Festival revenue runs on three revenue streams: ticket sales, sponsorships, and 
         Ticket pricing isn't just a revenue lever - it's a consumer behavior signal. When you model demand curves by region, artist tier, and historical sell-through rates, you're not just optimizing price. You're building a real-time map of fan loyalty, cultural relevance, and brand equity.
       </div>
     </div>
-   <div style="position:absolute; top:6%; right:6%; font-family:'DM Sans',sans-serif; font-size:0.75vw; color:rgba(255,255,255,0.25); letter-spacing:0.08em; text-transform:uppercase;">Pooja Pisharody</div>
   </div>
 
-  <!-- ── SLIDE 5: THE APPROACH ── -->
+  <!-- SLIDE 5 -->
   <div class="slide-wrapper" id="slide-5">
     <div class="slide s5">
-     <div style="position:absolute; top:4%; right:4%; font-family:'DM Sans',sans-serif; font-size:0.7vw; color:rgba(0,0,0,0.2); letter-spacing:0.08em; text-transform:uppercase; z-index:10;">Pooja Pisharody</div>
+      <div style="position:absolute; top:4%; right:4%; font-family:'DM Sans',sans-serif; font-size:0.7vw; color:rgba(0,0,0,0.2); letter-spacing:0.08em; text-transform:uppercase; z-index:10;">Pooja Pisharody</div>
       <div class="slide-header">
         <span class="slide-num">03</span>
         <div class="slide-title-light">From Spreadsheet to Strategy — What I Built</div>
@@ -820,10 +775,10 @@ Festival revenue runs on three revenue streams: ticket sales, sponsorships, and 
     </div>
   </div>
 
-  <!-- ── SLIDE 6: THE IMPACT ── -->
+  <!-- SLIDE 6 -->
   <div class="slide-wrapper" id="slide-6">
     <div class="slide s6">
-     <div style="position:absolute; top:4%; right:4%; font-family:'DM Sans',sans-serif; font-size:0.7vw; color:rgba(255,255,255,0.2); letter-spacing:0.08em; text-transform:uppercase; z-index:10;">Pooja Pisharody</div>
+      <div style="position:absolute; top:4%; right:4%; font-family:'DM Sans',sans-serif; font-size:0.7vw; color:rgba(255,255,255,0.2); letter-spacing:0.08em; text-transform:uppercase; z-index:10;">Pooja Pisharody</div>
       <div class="s6-left">
         <div class="s6-left-eyebrow">04 · The Impact</div>
         <div class="s6-left-title">What Changed</div>
@@ -849,10 +804,10 @@ Festival revenue runs on three revenue streams: ticket sales, sponsorships, and 
     </div>
   </div>
 
-  <!-- ── SLIDE 7: WHAT'S NEXT ── -->
+  <!-- SLIDE 7 -->
   <div class="slide-wrapper" id="slide-7">
     <div class="slide s7">
-     <div style="position:absolute; top:4%; right:4%; font-family:'DM Sans',sans-serif; font-size:0.7vw; color:rgba(255,255,255,0.2); letter-spacing:0.08em; text-transform:uppercase; z-index:10;">Pooja Pisharody</div>
+      <div style="position:absolute; top:4%; right:4%; font-family:'DM Sans',sans-serif; font-size:0.7vw; color:rgba(0,0,0,0.2); letter-spacing:0.08em; text-transform:uppercase; z-index:10;">Pooja Pisharody</div>
       <div class="slide-header">
         <span class="slide-num">05</span>
         <div class="slide-title-light">The Opportunity C3 Hasn't Captured Yet</div>
@@ -884,9 +839,10 @@ Festival revenue runs on three revenue streams: ticket sales, sponsorships, and 
     </div>
   </div>
 
-  <!-- ── SLIDE 8: TAKEAWAY ── -->
+  <!-- SLIDE 8 -->
   <div class="slide-wrapper" id="slide-8">
     <div class="slide s8">
+      <div style="position:absolute; top:4%; right:4%; font-family:'DM Sans',sans-serif; font-size:0.7vw; color:rgba(255,255,255,0.2); letter-spacing:0.08em; text-transform:uppercase; z-index:10;">Pooja Pisharody</div>
       <div class="s8-eyebrow">My Point of View</div>
       <div class="s8-quote">
         "The future of live entertainment isn't about selling more tickets. It's about knowing your fans well enough that they never want to buy a ticket to anything else."
@@ -896,9 +852,8 @@ Festival revenue runs on three revenue streams: ticket sales, sponsorships, and 
     </div>
   </div>
 
-</div><!-- end deck -->
+</div>
 
-<!-- ── NAVIGATION ── -->
 <div class="nav">
   <button id="prev" onclick="changeSlide(-1)" disabled>←</button>
   <span class="nav-counter" id="counter">1 / 8</span>

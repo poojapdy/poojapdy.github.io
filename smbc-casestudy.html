@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SMBC Case Study — Pooja Pisharody</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400&family=Barlow:wght@200;300;400&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green: #006341;
+    --green-light: #00a651;
+    --dark: #0f0f0f;
+    --dark2: #1a1a1a;
+    --cream: #F5F0E8;
+    --white: #ffffff;
+  }
+
+  body {
+    background: #111;
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--white);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .slide { width: 100%; aspect-ratio: 16/9; position: relative; display: flex; overflow: hidden; }
+  .slide-wrapper { display: none; width: 100%; }
+  .slide-wrapper.active { display: block; }
+
+  .author-tag {
+    position: absolute; top: 4%; right: 4%;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.7vw; color: rgba(255,255,255,0.22);
+    letter-spacing: 0.08em; text-transform: uppercase; z-index: 10;
+  }
+  .author-tag-dark {
+    position: absolute; top: 4%; right: 4%;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.7vw; color: rgba(0,0,0,0.2);
+    letter-spacing: 0.08em; text-transform: uppercase; z-index: 10;
+  }
+
+  .nav {
+    position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%);
+    display: flex; align-items: center; gap: 16px;
+    background: rgba(0,0,0,0.75); padding: 10px 20px;
+    border-radius: 40px; border: 1px solid rgba(255,255,255,0.1);
+    z-index: 100; backdrop-filter: blur(8px);
+  }
+  .nav button {
+    background: none; border: 1px solid rgba(255,255,255,0.2);
+    color: white; width: 36px; height: 36px; border-radius: 50%;
+    cursor: pointer; font-size: 14px; display: flex;
+    align-items: center; justify-content: center; transition: all 0.2s;
+  }
+  .nav button:hover { background: var(--green-light); border-color: var(--green-light); }
+  .nav button:disabled { opacity: 0.3; cursor: default; }
+  .nav button:disabled:hover { background: none; border-color: rgba(255,255,255,0.2); }
+  .nav-counter { font-size: 13px; color: rgba(255,255,255,0.4); font-weight: 300; min-width: 60px; text-align: center; }
+
+  /* ══ SLIDE 1 — COVER ══ */
+  .s1 { background: #0a1a12; flex-direction: row; }
+  .s1-left {
+    width: 58%; background: #071510; padding: 8% 7%;
+    display: flex; flex-direction: column; justify-content: center; gap: 20px;
+    border-right: 3px solid var(--green-light);
+  }
+  .s1-eyebrow { font-size: 0.85vw; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green-light); font-weight: 400; }
+  .s1-title { font-size: 4.2vw; font-weight: 700; line-height: 1.0; color: var(--white); }
+  .s1-title em { font-style: italic; color: var(--green-light); }
+  .s1-sub { font-size: 1vw; color: rgba(255,255,255,0.4); font-weight: 300; line-height: 1.7; }
+  .s1-right {
+    width: 42%; background: #0d1f17; padding: 6%;
+    display: flex; flex-direction: column; justify-content: flex-end; gap: 0;
+  }
+  .s1-stat { padding-bottom: 2.5%; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 2.5%; }
+  .s1-stat:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .s1-stat-num { font-size: 2.8vw; font-weight: 700; color: var(--green-light); line-height: 1; }
+  .s1-stat-label { font-size: 0.75vw; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* ══ SLIDE 2 — THE CONTEXT ══ */
+  .s2 { background: var(--cream); color: var(--dark); flex-direction: column; padding: 6% 8%; }
+  .slide-header { display: flex; align-items: baseline; gap: 14px; margin-bottom: 4%; }
+  .slide-num { font-size: 1vw; font-weight: 400; color: var(--green); font-style: italic; }
+  .slide-h { font-size: 2.6vw; font-weight: 700; color: var(--dark); line-height: 1.1; }
+  .slide-h-light { font-size: 2.6vw; font-weight: 700; color: var(--white); line-height: 1.1; }
+
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2%; flex: 1; }
+  .col-card { background: white; padding: 5%; display: flex; flex-direction: column; gap: 8px; border-top: 3px solid var(--green); }
+  .col-card-label { font-size: 0.75vw; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); font-weight: 500; }
+  .col-card-title { font-size: 1.3vw; font-weight: 700; color: var(--dark); line-height: 1.2; }
+  .col-card-body { font-size: 1vw; color: #555; line-height: 1.65; font-weight: 300; }
+
+  /* ══ SLIDE 3 — THE STORYTELLING PROBLEM ══ */
+  .s3 { background: var(--dark2); flex-direction: row; align-items: stretch; }
+  .s3-left {
+    width: 45%; background: var(--green);
+    padding: 8% 6%; display: flex; flex-direction: column; justify-content: center; gap: 16px;
+  }
+  .s3-left-eye { font-size: 0.75vw; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+  .s3-left-title { font-size: 3vw; font-weight: 700; color: var(--white); line-height: 1.05; }
+  .s3-left-body { font-size: 1vw; color: rgba(255,255,255,0.7); font-weight: 300; line-height: 1.7; }
+  .s3-right { width: 55%; padding: 6%; display: flex; flex-direction: column; justify-content: center; gap: 5%; }
+  .tension-row { display: flex; align-items: flex-start; gap: 5%; padding-bottom: 4%; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .tension-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .tension-icon { font-size: 1.2vw; color: var(--green-light); flex-shrink: 0; margin-top: 2px; }
+  .tension-text { display: flex; flex-direction: column; gap: 3px; }
+  .tension-title { font-size: 1.2vw; font-weight: 600; color: var(--white); }
+  .tension-body { font-size: 1vw; color: rgba(255,255,255,0.55); font-weight: 300; line-height: 1.6; }
+
+  /* ══ SLIDE 4 — THE INSIGHT ══ */
+  .s4 { background: var(--green); flex-direction: column; justify-content: center; align-items: center; padding: 8% 12%; text-align: center; }
+  .s4-eye { font-size: 0.8vw; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 4%; }
+  .s4-quote { font-size: 3.4vw; font-style: italic; font-weight: 300; color: var(--white); line-height: 1.2; max-width: 82%; margin-bottom: 4%; }
+  .s4-sub { font-size: 1vw; color: rgba(255,255,255,0.7); font-weight: 300; line-height: 1.7; max-width: 62%; }
+
+  /* ══ SLIDE 5 — WHAT I BUILT ══ */
+  .s5 { background: var(--cream); color: var(--dark); flex-direction: column; padding: 6% 8%; }
+  .approach-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2%; flex: 1; margin-top: 4%; }
+  .approach-card { background: white; padding: 6% 5%; display: flex; flex-direction: column; gap: 10px; position: relative; overflow: hidden; }
+  .approach-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--green); }
+  .approach-num { font-size: 3vw; font-weight: 700; color: rgba(0,100,65,0.1); line-height: 1; }
+  .approach-title { font-size: 1.3vw; font-weight: 700; color: var(--dark); line-height: 1.2; }
+  .approach-body { font-size: 1vw; color: #555; line-height: 1.65; font-weight: 300; }
+
+  /* ══ SLIDE 6 — IMPACT ══ */
+  .s6 { background: var(--dark); flex-direction: row; align-items: stretch; }
+  .s6-left { width: 38%; background: var(--green); padding: 8% 6%; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
+  .s6-left-eye { font-size: 0.75vw; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+  .s6-left-title { font-size: 3vw; font-weight: 700; font-style: italic; color: var(--white); line-height: 1.1; }
+  .s6-left-body { font-size: 1vw; color: rgba(255,255,255,0.65); font-weight: 300; line-height: 1.7; }
+  .s6-right { width: 62%; padding: 6% 7%; display: flex; flex-direction: column; justify-content: center; gap: 4%; }
+  .impact-row { display: flex; align-items: center; gap: 5%; padding-bottom: 4%; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .impact-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .impact-num { font-size: 2.8vw; font-weight: 700; color: var(--green-light); line-height: 1; min-width: 28%; }
+  .impact-label { font-size: 1vw; color: rgba(255,255,255,0.6); font-weight: 300; line-height: 1.55; }
+
+  /* ══ SLIDE 7 — WHAT'S NEXT ══ */
+  .s7 { background: #071510; color: var(--white); flex-direction: column; padding: 6% 8%; }
+  .next-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2%; flex: 1; margin-top: 4%; }
+  .next-card { background: #0d1f17; padding: 6% 5%; display: flex; flex-direction: column; gap: 10px; border-top: 2px solid rgba(0,166,81,0.3); }
+  .next-num { font-size: 0.75vw; letter-spacing: 0.15em; text-transform: uppercase; color: var(--green-light); font-weight: 500; }
+  .next-title { font-size: 1.3vw; font-weight: 700; color: var(--white); line-height: 1.2; }
+  .next-body { font-size: 1vw; color: rgba(255,255,255,0.5); line-height: 1.65; font-weight: 300; }
+
+  /* ══ SLIDE 8 — TAKEAWAY ══ */
+  .s8 { background: var(--dark); flex-direction: column; justify-content: center; align-items: center; padding: 8% 14%; text-align: center; position: relative; }
+  .s8::before { content: '✦'; position: absolute; top: 6%; right: 7%; font-size: 1.5vw; color: var(--green-light); opacity: 0.3; }
+  .s8::after { content: '✦'; position: absolute; bottom: 6%; left: 7%; font-size: 1vw; color: var(--green-light); opacity: 0.2; }
+  .s8-eye { font-size: 0.75vw; letter-spacing: 0.2em; text-transform: uppercase; color: var(--green-light); margin-bottom: 5%; }
+  .s8-quote { font-size: 2.8vw; font-style: italic; font-weight: 300; color: var(--white); line-height: 1.3; max-width: 80%; margin-bottom: 5%; }
+  .s8-divider { width: 40px; height: 2px; background: var(--green-light); margin: 0 auto 4%; }
+  .s8-sub { font-size: 0.85vw; color: rgba(255,255,255,0.25); font-weight: 300; letter-spacing: 0.05em; }
+  .footer-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--green-light); }
+
+  @media print {
+    .nav { display: none; }
+    .slide-wrapper { display: block !important; page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — COVER -->
+<div class="slide-wrapper active" id="slide-1">
+  <div class="slide s1">
+    <div class="s1-left">
+      <div class="s1-eyebrow">Creative Strategy Brief · Sumitomo Mitsui Banking Corporation</div>
+      <div class="s1-title">What Investment<br>Banking Taught Me<br>About <em>Storytelling</em></div>
+      <div class="s1-sub">A strategic brief on why the best pitch deck<br>is indistinguishable from a creative brief.</div>
+    </div>
+    <div class="s1-right">
+      <div class="author-tag">Pooja Pisharody</div>
+      <div class="s1-stat">
+        <div class="s1-stat-num">$85M+</div>
+        <div class="s1-stat-label">Financing deals executed</div>
+      </div>
+      <div class="s1-stat">
+        <div class="s1-stat-num">$50M</div>
+        <div class="s1-stat-label">Private placement led</div>
+      </div>
+      <div class="s1-stat">
+        <div class="s1-stat-num">3</div>
+        <div class="s1-stat-label">Sectors — Healthcare, Tech, Real Estate</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 2 — THE CONTEXT -->
+<div class="slide-wrapper" id="slide-2">
+  <div class="slide s2">
+    <div class="author-tag-dark">Pooja Pisharody</div>
+    <div class="slide-header">
+      <span class="slide-num">01</span>
+      <div class="slide-h">Investment Banking as a Communication Discipline</div>
+    </div>
+    <div class="three-col">
+      <div class="col-card">
+        <div class="col-card-label">The Role</div>
+        <div class="col-card-title">Analyst, Real Estate & Healthcare</div>
+        <div class="col-card-body">At SMBC, I supported $85M+ in financing deals across Real Estate and Healthcare-Biotech — executing financial models, credit assessments, and investor presentations for complex, high-stakes transactions.</div>
+      </div>
+      <div class="col-card">
+        <div class="col-card-label">The Insight</div>
+        <div class="col-card-title">Every Deal Is a Story</div>
+        <div class="col-card-body">The financial model tells you if something is viable. The pitch deck tells you if it's fundable. Those are two completely different problems — and the second one is entirely a creative challenge.</div>
+      </div>
+      <div class="col-card">
+        <div class="col-card-label">The Question</div>
+        <div class="col-card-title">What Makes a Company Believable?</div>
+        <div class="col-card-body">Not just fundable — believable. The companies that got funded weren't always the ones with the best numbers. They were the ones whose story made investors feel like the future was inevitable.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 3 — THE STORYTELLING PROBLEM -->
+<div class="slide-wrapper" id="slide-3">
+  <div class="slide s3">
+    <div class="author-tag">Pooja Pisharody</div>
+    <div class="s3-left">
+      <div class="s3-left-eye">02 · The Strategic Tension</div>
+      <div class="s3-left-title">Data Doesn't Close Deals. Narrative Does.</div>
+      <div class="s3-left-body">The most technically correct pitch decks I saw at SMBC rarely moved the fastest. The ones that did had something else — a point of view, a villain, a vision of what the world looks like when this company wins.</div>
+    </div>
+    <div class="s3-right">
+      <div class="tension-row">
+        <div class="tension-icon">→</div>
+        <div class="tension-text">
+          <div class="tension-title">The Complexity Problem</div>
+          <div class="tension-body">Healthcare-Biotech is one of the hardest sectors to finance because it's one of the hardest to explain. The gap between scientific innovation and investor comprehension is a communication design problem, not a finance problem.</div>
+        </div>
+      </div>
+      <div class="tension-row">
+        <div class="tension-icon">→</div>
+        <div class="tension-text">
+          <div class="tension-title">The Credibility Problem</div>
+          <div class="tension-body">Early-stage companies in emerging sectors need to make investors believe in a future that doesn't yet exist. That's exactly what brand strategy does — and almost no early-stage company thinks about it that way.</div>
+        </div>
+      </div>
+      <div class="tension-row">
+        <div class="tension-icon">→</div>
+        <div class="tension-text">
+          <div class="tension-title">The Differentiation Problem</div>
+          <div class="tension-body">In a stack of 50 pitches, the companies that stand out aren't the ones with the biggest TAM slide. They're the ones whose story you're still thinking about the next morning.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 4 — THE INSIGHT -->
+<div class="slide-wrapper" id="slide-4">
+  <div class="slide s4">
+    <div class="author-tag">Pooja Pisharody</div>
+    <div class="s4-eye">The Core Insight</div>
+    <div class="s4-quote">"A pitch deck is a creative brief with a financial model attached."</div>
+    <div class="s4-sub">The best investment bankers and the best creative strategists are solving the same problem — how do you make someone believe in something that doesn't fully exist yet? The tools are different. The craft is the same.</div>
+  </div>
+</div>
+
+<!-- SLIDE 5 — WHAT I BUILT -->
+<div class="slide-wrapper" id="slide-5">
+  <div class="slide s5">
+    <div class="author-tag-dark">Pooja Pisharody</div>
+    <div class="slide-header">
+      <span class="slide-num" style="color:var(--green)">03</span>
+      <div class="slide-h">What I Built at SMBC</div>
+    </div>
+    <div class="approach-grid">
+      <div class="approach-card">
+        <div class="approach-num">01</div>
+        <div class="approach-title">$50M Private Placement — Healthcare Biotech</div>
+        <div class="approach-body">Led full underwriting for a biopharmaceutical company with a proprietary drug pipeline — translating highly technical scientific claims into a fundable investment narrative for institutional investors.</div>
+      </div>
+      <div class="approach-card">
+        <div class="approach-num">02</div>
+        <div class="approach-title">Fujifilm Market Entry Strategy</div>
+        <div class="approach-body">Developed a strategic market entry presentation for Fujifilm's Diagnostics & Imaging division — analyzing industry disruptors and formulating a competitive product strategy that bridged finance and brand positioning.</div>
+      </div>
+      <div class="approach-card">
+        <div class="approach-num">03</div>
+        <div class="approach-title">Cross-Sector Deal Pipeline Analysis</div>
+        <div class="approach-body">Supported $85M+ in financing across Real Estate and Healthcare — developing expertise in how different sectors communicate value, risk, and growth potential to very different audiences.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 6 — IMPACT -->
+<div class="slide-wrapper" id="slide-6">
+  <div class="slide s6">
+    <div class="author-tag">Pooja Pisharody</div>
+    <div class="s6-left">
+      <div class="s6-left-eye">04 · The Impact</div>
+      <div class="s6-left-title">What I Learned</div>
+      <div class="s6-left-body">Banking taught me that the most valuable skill isn't building the model. It's knowing which story the model is trying to tell — and making sure that story lands.</div>
+    </div>
+    <div class="s6-right">
+      <div class="impact-row">
+        <div class="impact-num">$85M+</div>
+        <div class="impact-label">In financing deals executed — each requiring a distinct narrative strategy tailored to the sector, the investor profile, and the stage of the company</div>
+      </div>
+      <div class="impact-row">
+        <div class="impact-num">3 Sectors</div>
+        <div class="impact-label">Healthcare, Technology, and Real Estate — three industries with completely different storytelling conventions, risk tolerances, and investor psychology</div>
+      </div>
+      <div class="impact-row">
+        <div class="impact-num">1 Skill</div>
+        <div class="impact-label">The ability to take something complex and make it feel inevitable — which turns out to be as useful in creative strategy as it is in investment banking</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 7 — WHAT'S NEXT -->
+<div class="slide-wrapper" id="slide-7">
+  <div class="slide s7">
+    <div class="author-tag">Pooja Pisharody</div>
+    <div class="slide-header">
+      <span class="slide-num" style="color:var(--green-light)">05</span>
+      <div class="slide-h-light">What Banking Gets Wrong About Storytelling</div>
+    </div>
+    <div class="next-grid">
+      <div class="next-card">
+        <div class="next-num">01 · Design</div>
+        <div class="next-title">The Pitch Deck Hasn't Been Redesigned Since 2005</div>
+        <div class="next-body">The financial industry still treats pitch decks as data delivery vehicles. The best-performing decks in creative and tech industries look nothing like a banking deck — and they close faster because of it.</div>
+      </div>
+      <div class="next-card">
+        <div class="next-num">02 · Brand</div>
+        <div class="next-title">Early-Stage Companies Underinvest in Brand Strategy</div>
+        <div class="next-body">Companies raising Series A and B rounds pour money into financial models and legal fees and almost nothing into brand clarity. A company that can't explain itself simply is a company that can't be funded simply.</div>
+      </div>
+      <div class="next-card">
+        <div class="next-num">03 · Translation</div>
+        <div class="next-title">The Gap Between Science and Story Is a Business Opportunity</div>
+        <div class="next-body">Healthcare-Biotech, DeepTech, and Climate Tech are all full of world-changing companies that cannot explain themselves to a general audience. Creative strategists who can bridge that gap are extremely rare and extremely valuable.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 8 — TAKEAWAY -->
+<div class="slide-wrapper" id="slide-8">
+  <div class="slide s8">
+    <div class="author-tag">Pooja Pisharody</div>
+    <div class="s8-eye">My Point of View</div>
+    <div class="s8-quote">"The most fundable companies aren't the most financially sound. They're the ones whose future feels unavoidable."</div>
+    <div class="s8-divider"></div>
+    <div class="s8-sub">Making complex things feel simple and inevitable — that's not just banking. That's strategy. That's brand. That's the work.</div>
+    <div class="footer-bar"></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav">
+  <button id="prev" onclick="changeSlide(-1)" disabled>←</button>
+  <span class="nav-counter" id="counter">1 / 8</span>
+  <button id="next" onclick="changeSlide(1)">→</button>
+</div>
+
+<script>
+  let current = 1;
+  const total = 8;
+  function changeSlide(dir) {
+    document.getElementById('slide-' + current).classList.remove('active');
+    current += dir;
+    document.getElementById('slide-' + current).classList.add('active');
+    document.getElementById('counter').textContent = current + ' / ' + total;
+    document.getElementById('prev').disabled = current === 1;
+    document.getElementById('next').disabled = current === total;
+    window.scrollTo(0,0);
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowRight' && current < total) changeSlide(1);
+    if (e.key === 'ArrowLeft' && current > 1) changeSlide(-1);
+  });
+</script>
+
+</body>
+</html>

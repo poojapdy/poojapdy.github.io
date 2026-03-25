@@ -28,7 +28,6 @@
       min-height: 100vh;
     }
 
-    /* ── LEFT ── */
     .left {
       border-right: 1px solid #2a3a2c;
       padding: 48px 40px 48px 48px;
@@ -47,7 +46,6 @@
     .photo-circle img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     .left-name { font-size: 26px; font-weight: 400; letter-spacing: 0.01em; text-align: center; }
-
     .left-socials { margin-top: auto; }
 
     .social-icon {
@@ -59,14 +57,12 @@
     .social-icon:hover { opacity: 1; border-color: #6a9070; }
     .social-icon svg { width: 16px; height: 16px; fill: #ddd8c4; }
 
-    /* ── RIGHT ── */
     .right {
       padding: 56px 64px;
       display: flex; flex-direction: column;
       justify-content: flex-start; gap: 32px;
     }
 
-    /* ── NAV ── */
     .site-nav { display: flex; gap: 24px; }
 
     .nav-link {
@@ -79,11 +75,9 @@
     .nav-link:hover { color: #ddd8c4; }
     .nav-link.active { color: #c8d4a0; border-bottom-color: #c8d4a0; }
 
-    /* ── PAGES ── */
     .page { display: none; flex-direction: column; gap: 32px; }
     .page.active { display: flex; }
 
-    /* ── HOME ── */
     .top-section { display: flex; flex-direction: column; gap: 32px; }
 
     .star-wrap { position: relative; width: 130px; height: 90px; display: inline-block; }
@@ -106,17 +100,8 @@
     @keyframes floatDrift { 0% { transform: translateY(0px); } 50% { transform: translateY(-5px); } 100% { transform: translateY(0px); } }
 
     .headline { display: flex; flex-direction: column; gap: 6px; }
-
-    .headline-name {
-      font-size: clamp(32px, 4vw, 48px); font-weight: 700; font-style: italic;
-      color: #c8d4a0; letter-spacing: -0.01em; line-height: 1.05;
-    }
-
-    .headline-line {
-      font-family: 'EB Garamond', serif;
-      font-size: clamp(18px, 2.2vw, 24px); font-weight: 400;
-      color: #8a9e8d; font-style: italic; line-height: 1.4;
-    }
+    .headline-name { font-size: clamp(32px, 4vw, 48px); font-weight: 700; font-style: italic; color: #c8d4a0; letter-spacing: -0.01em; line-height: 1.05; }
+    .headline-line { font-family: 'EB Garamond', serif; font-size: clamp(18px, 2.2vw, 24px); font-weight: 400; color: #8a9e8d; font-style: italic; line-height: 1.4; }
 
     .timeline { display: flex; flex-direction: column; position: relative; padding-left: 20px; margin-top: 8px; }
     .timeline::before { content: ''; position: absolute; left: 5px; top: 10px; bottom: 10px; width: 1px; background: #2a3a2c; }
@@ -125,7 +110,7 @@
     .tl-co { font-family: 'DM Sans', sans-serif; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #4a6a4e; }
     .tl-role { font-family: 'EB Garamond', serif; font-size: 16px; font-style: italic; color: #8a9e8d; }
 
-    /* ── WORK PAGE ── */
+    /* WORK PAGE */
     .work-list { display: flex; flex-direction: column; gap: 0; }
 
     .work-item {
@@ -136,6 +121,16 @@
     }
     .work-item:first-child { border-top: 1px solid #2a3a2c; }
     .work-item:hover { opacity: 0.65; }
+
+    /* BofA row — no hover dim */
+    .work-item-bofa {
+      display: flex; align-items: center; gap: 28px;
+      padding: 24px 0; border-bottom: 1px solid #2a3a2c;
+      border-top: 1px solid #2a3a2c;
+      text-decoration: none; color: inherit;
+      cursor: pointer;
+      flex-direction: column; align-items: flex-start;
+    }
 
     .work-thumb {
       width: 160px; height: 90px; flex-shrink: 0;
@@ -150,11 +145,7 @@
     }
     .thumb-tag { font-family: 'DM Sans', sans-serif; font-size: 4.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #E31837; }
     .thumb-title { font-family: 'DM Sans', sans-serif; font-size: 7px; font-weight: 700; color: #fff; line-height: 1.25; }
-
-    .thumb-r {
-      width: 45%; background: #141414; padding: 8px 6px;
-      display: flex; flex-direction: column; justify-content: flex-end; gap: 5px;
-    }
+    .thumb-r { width: 45%; background: #141414; padding: 8px 6px; display: flex; flex-direction: column; justify-content: flex-end; gap: 5px; }
     .thumb-stat { display: flex; flex-direction: column; gap: 1px; padding-bottom: 5px; border-bottom: 1px solid rgba(255,255,255,0.06); }
     .thumb-stat:last-child { border-bottom: none; padding-bottom: 0; }
     .thumb-num { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 700; color: #E31837; line-height: 1; }
@@ -165,7 +156,6 @@
     .work-title-text { font-family: 'EB Garamond', serif; font-size: 19px; font-style: italic; color: #ddd8c4; line-height: 1.3; }
     .work-arrow { font-family: 'DM Sans', sans-serif; font-size: 11px; color: #4a6a4e; margin-top: 4px; }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 860px) {
       .site-wrap { grid-template-columns: 1fr; }
       .left { border-right: none; border-bottom: 1px solid #2a3a2c; padding: 32px 28px; flex-direction: row; flex-wrap: wrap; align-items: flex-start; gap: 16px; }
@@ -181,11 +171,8 @@
 
 <div class="site-wrap">
 
-  <!-- ── LEFT ── -->
   <aside class="left">
-    <div class="photo-circle">
-      <img src="poojappp.jpg" alt="Pooja" />
-    </div>
+    <div class="photo-circle"><img src="poojappp.jpg" alt="Pooja" /></div>
     <div class="left-name">Pooja Pisharody</div>
     <div class="left-socials">
       <a href="https://linkedin.com/in/poojapisharody" target="_blank" class="social-icon" title="LinkedIn">
@@ -196,7 +183,6 @@
     </div>
   </aside>
 
-  <!-- ── RIGHT ── -->
   <main class="right">
 
     <nav class="site-nav">
@@ -207,7 +193,6 @@
     <!-- HOME PAGE -->
     <div class="page active" id="page-home">
       <div class="top-section">
-
         <div class="star-wrap">
           <span class="star">✦</span>
           <span class="speck">✧</span>
@@ -216,12 +201,10 @@
           <span class="speck">·</span>
           <span class="speck">✦</span>
         </div>
-
         <div class="headline">
           <div class="headline-name">Finance & Creative Strategy</div>
           <div class="headline-line">Design, Music, & Technology</div>
         </div>
-
         <div class="timeline">
           <div class="tl-item">
             <span class="tl-co">Amazon</span>
@@ -236,13 +219,11 @@
             <span class="tl-role">Investment Banking</span>
           </div>
         </div>
-
       </div>
     </div>
 
     <!-- WORK PAGE -->
     <div class="page" id="page-work">
-
       <div class="work-list">
 
         <!-- LIVE NATION -->
@@ -285,10 +266,9 @@
           </div>
         </a>
 
-        <!-- BANK OF AMERICA PDF -->
-        <div class="work-item" onclick="togglePDF()" style="flex-direction:column; align-items:flex-start;">
+        <!-- BANK OF AMERICA — no hover dim, PNG fits correctly -->
+        <div class="work-item-bofa" onclick="togglePDF()">
           <div style="display:flex; align-items:center; gap:28px; width:100%;">
-            <!-- Thumbnail matching Behance cover: light blue gradient, BofA logo, phone mockup feel -->
             <div class="work-thumb" style="background:linear-gradient(135deg,#d6e8f5 0%,#eaf4fb 100%); border-color:#c8dde8; align-items:center; justify-content:center; flex-direction:column; gap:4px; overflow:hidden; position:relative;">
               <div style="font-family:'DM Sans',sans-serif; font-size:8px; font-weight:800; color:#012169; letter-spacing:0.04em; text-align:center; padding:0 8px; line-height:1.2;">BANK OF<br>AMERICA</div>
               <div style="width:18px; height:12px; margin-top:2px; display:flex; gap:2px; align-items:flex-end;">
@@ -304,15 +284,13 @@
               <div class="work-arrow" id="bofa-label">Expand ↓</div>
             </div>
           </div>
-          <!-- CHANGE THIS: rename your PDF to bofa-casestudy.pdf and upload to your GitHub repo -->
+          <!-- PNG displayed as full-width image, not iframe, so it fits correctly -->
           <div id="bofa-pdf" style="display:none; width:100%; margin-top:20px;">
-            <iframe
+            <img
               src="bofa-casestudy.png"
-              width="100%"
-              height="700px"
-              style="border:1px solid #2a3a2c; background:#111;"
-              title="Bank of America Case Study">
-            </iframe>
+              style="width:100%; height:auto; display:block; border:1px solid #2a3a2c;"
+              alt="Bank of America Case Study"
+            />
           </div>
         </div>
 

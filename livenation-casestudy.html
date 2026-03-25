@@ -13,7 +13,6 @@
     --dark: #0f0f0f;
     --dark2: #1a1a1a;
     --cream: #F5F0E8;
-    --muted: #888;
     --white: #ffffff;
   }
 
@@ -26,13 +25,13 @@
 
   .deck { width: 100%; }
 
+  /* FIX 1: removed aspect-ratio so slide fits viewport without zooming */
   .slide {
     width: 100%;
-    aspect-ratio: 16/9;
+    height: 100vh;
     position: relative;
     display: flex;
     overflow: hidden;
-    page-break-after: always;
   }
 
   .nav {
@@ -68,550 +67,146 @@
   .nav button:hover { background: var(--red); border-color: var(--red); }
   .nav button:disabled { opacity: 0.3; cursor: default; }
   .nav button:disabled:hover { background: none; border-color: rgba(255,255,255,0.2); }
-
-  .nav-counter {
-    font-size: 13px;
-    color: rgba(255,255,255,0.5);
-    font-weight: 300;
-    min-width: 60px;
-    text-align: center;
-  }
+  .nav-counter { font-size: 13px; color: rgba(255,255,255,0.5); font-weight: 300; min-width: 60px; text-align: center; }
 
   .slide-wrapper { display: none; width: 100%; }
   .slide-wrapper.active { display: block; }
 
-  /* ── SLIDE 1 ── */
-  .s1 {
-    background: var(--dark);
-    flex-direction: row;
-    align-items: stretch;
-    min-height: 100%;
-  }
-
-  .s1-left {
-    width: 55%;
-    background: #0a0a0a;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 8% 7%;
-    position: relative;
-  }
-
-  .s1-left::after {
-    content: '';
+  /* FIX 2: unified author tag style used across ALL slides */
+  .author-tag {
     position: absolute;
-    right: 0; top: 0; bottom: 0;
-    width: 3px;
-    background: var(--red);
-  }
-
-  .s1-tag {
-    font-size: 0.85vw;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 3%;
-    font-weight: 400;
-  }
-
-  .s1-title {
+    top: 4%; right: 4%;
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 4.4vw;
-    font-weight: 700;
-    line-height: 1.05;
-    color: var(--white);
-    margin-bottom: 4%;
-  }
-
-  .s1-title em { font-style: italic; color: var(--red); }
-
-  .s1-sub {
-    font-size: 1vw;
-    color: rgba(255,255,255,0.45);
-    font-weight: 300;
-    line-height: 1.7;
-  }
-
-  .s1-right {
-    width: 45%;
-    background: #141414;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 6%;
-    position: relative;
-  }
-
-  .s1-stats {
-    display: flex;
-    flex-direction: column;
-    gap: 2%;  /* reduced from 3% to prevent overflow */
-  }
-
-  .s1-stat {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    padding-bottom: 2%;  /* reduced from 2.5% */
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-  }
-  .s1-stat:last-child { border-bottom: none; }
-
-  .s1-stat-num {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 2.6vw;  /* reduced from 2.8vw */
-    font-weight: 700;
-    color: var(--red);
-    line-height: 1;
-  }
-
-  .s1-stat-label {
-    font-size: 0.75vw;  /* slightly reduced */
-    color: rgba(255,255,255,0.4);
-    font-weight: 300;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-
-  .s1-author {
-    position: absolute;
-    top: 6%;
-    right: 6%;
     font-size: 0.75vw;
-    color: rgba(255,255,255,0.25);
     font-weight: 300;
+    color: rgba(255,255,255,0.25);
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    z-index: 10;
   }
+  .author-tag-dark {
+    position: absolute;
+    top: 4%; right: 4%;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75vw;
+    font-weight: 300;
+    color: rgba(0,0,0,0.2);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    z-index: 10;
+  }
+
+  /* ── SLIDE 1 ── */
+  .s1 { background: var(--dark); flex-direction: row; align-items: stretch; }
+
+  .s1-left {
+    width: 55%; background: #0a0a0a;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 8% 7%; position: relative;
+  }
+  .s1-left::after {
+    content: ''; position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 3px; background: var(--red);
+  }
+
+  .s1-tag { font-size: 0.85vw; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); margin-bottom: 3%; font-weight: 400; }
+
+  .s1-title { font-family: 'Barlow Condensed', sans-serif; font-size: 4.4vw; font-weight: 700; line-height: 1.05; color: var(--white); margin-bottom: 4%; }
+  .s1-title em { font-style: italic; color: var(--red); }
+
+  .s1-sub { font-size: 1vw; color: rgba(255,255,255,0.45); font-weight: 300; line-height: 1.7; }
+
+  .s1-right {
+    width: 45%; background: #141414;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 6%; position: relative;
+  }
+
+  .s1-stats { display: flex; flex-direction: column; gap: 2%; }
+
+  .s1-stat { display: flex; flex-direction: column; gap: 2px; padding-bottom: 2%; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .s1-stat:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .s1-stat-num { font-family: 'Barlow Condensed', sans-serif; font-size: 2.6vw; font-weight: 700; color: var(--red); line-height: 1; }
+  .s1-stat-label { font-size: 0.75vw; color: rgba(255,255,255,0.4); font-weight: 300; letter-spacing: 0.05em; text-transform: uppercase; }
 
   /* ── SLIDE 2 ── */
-  .s2 {
-    background: var(--cream);
-    color: var(--dark);
-    flex-direction: column;
-    padding: 6% 8%;
-  }
+  .s2 { background: var(--cream); color: var(--dark); flex-direction: column; padding: 6% 8%; }
 
+  /* FIX 3: slide-header now has consistent top positioning matching other slides */
   .slide-header {
     display: flex;
     align-items: baseline;
     gap: 16px;
-    margin-bottom: 5%;
+    margin-bottom: 4%;
+    padding-top: 0;
   }
 
-  .slide-num {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 1vw;
-    font-weight: 400;
-    color: var(--red);
-    font-style: normal;
-  }
+  .slide-num { font-family: 'Barlow Condensed', sans-serif; font-size: 1vw; font-weight: 400; color: var(--red); font-style: normal; }
+  .slide-title-light { font-family: 'Barlow Condensed', sans-serif; font-size: 2.6vw; font-weight: 700; color: var(--dark); line-height: 1.1; }
+  .slide-title-dark { font-family: 'Barlow Condensed', sans-serif; font-size: 2.6vw; font-weight: 700; color: var(--white); line-height: 1.1; }
 
-  .slide-title-light {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 2.6vw;
-    font-weight: 700;
-    color: var(--dark);
-    line-height: 1.1;
-  }
+  .industry-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2%; flex: 1; }
 
-  .industry-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 2%;
-    flex: 1;
-  }
-
-  .industry-card {
-    background: white;
-    padding: 5% 5%;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    border-top: 3px solid var(--red);
-  }
-
-  .industry-card-num {
-    font-size: 0.75vw;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--red);
-    font-weight: 500;
-  }
-
-  .industry-card-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 1.4vw;
-    font-weight: 700;
-    color: var(--dark);
-    line-height: 1.2;
-  }
-
-  .industry-card-body {
-    font-size: 1vw;
-    color: #555;
-    line-height: 1.65;
-    font-weight: 300;
-  }
+  .industry-card { background: white; padding: 5%; display: flex; flex-direction: column; gap: 8px; border-top: 3px solid var(--red); }
+  .industry-card-num { font-size: 0.75vw; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red); font-weight: 500; }
+  .industry-card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.4vw; font-weight: 700; color: var(--dark); line-height: 1.2; }
+  .industry-card-body { font-size: 1vw; color: #555; line-height: 1.65; font-weight: 300; }
 
   /* ── SLIDE 3 ── */
-  .s3 {
-    background: var(--dark2);
-    flex-direction: column;
-    padding: 6% 8%;
-  }
+  .s3 { background: var(--dark2); flex-direction: column; padding: 6% 8%; }
 
-  .s3-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 2%;
-    flex: 1;
-    margin-top: 4%;
-  }
+  .s3-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2%; flex: 1; margin-top: 4%; }
 
-  .problem-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    padding: 6% 5%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .problem-icon {
-    width: 2vw;
-    height: 2vw;
-    background: var(--red);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1vw;
-    margin-bottom: 4px;
-  }
-
-  .problem-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 1.4vw;
-    font-weight: 700;
-    color: var(--white);
-    line-height: 1.2;
-  }
-
-  .problem-body {
-    font-size: 1vw;
-    color: rgba(255,255,255,0.85);
-    line-height: 1.7;
-    font-weight: 300;
-  }
-
-  .slide-title-dark {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 2.6vw;
-    font-weight: 700;
-    color: var(--white);
-    line-height: 1.1;
-  }
+  .problem-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 6% 5%; display: flex; flex-direction: column; gap: 10px; }
+  .problem-icon { width: 2vw; height: 2vw; background: var(--red); display: flex; align-items: center; justify-content: center; font-size: 1vw; margin-bottom: 4px; }
+  .problem-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.4vw; font-weight: 700; color: var(--white); line-height: 1.2; }
+  .problem-body { font-size: 1vw; color: rgba(255,255,255,0.85); line-height: 1.7; font-weight: 300; }
 
   /* ── SLIDE 4 ── */
-  .s4 {
-    background: var(--red);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 8% 12%;
-    text-align: center;
-  }
-
-  .s4-eyebrow {
-    font-size: 0.8vw;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.6);
-    font-weight: 400;
-    margin-bottom: 4%;
-  }
-
-  .s4-quote {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 3.8vw;
-    font-style: italic;
-    font-weight: 300;
-    color: var(--white);
-    line-height: 1.2;
-    max-width: 82%;
-    margin-bottom: 5%;
-  }
-
-  .s4-sub {
-    font-size: 1vw;
-    color: rgba(255,255,255,0.7);
-    font-weight: 300;
-    line-height: 1.7;
-    max-width: 65%;
-  }
+  .s4 { background: var(--red); flex-direction: column; justify-content: center; align-items: center; padding: 8% 12%; text-align: center; }
+  .s4-eyebrow { font-size: 0.8vw; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.6); font-weight: 400; margin-bottom: 4%; }
+  .s4-quote { font-family: 'Barlow Condensed', sans-serif; font-size: 3.8vw; font-style: italic; font-weight: 300; color: var(--white); line-height: 1.2; max-width: 82%; margin-bottom: 5%; }
+  .s4-sub { font-size: 1vw; color: rgba(255,255,255,0.7); font-weight: 300; line-height: 1.7; max-width: 65%; }
 
   /* ── SLIDE 5 ── */
-  .s5 {
-    background: var(--cream);
-    color: var(--dark);
-    flex-direction: column;
-    padding: 6% 8%;
-  }
-
-  .approach-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 2%;
-    flex: 1;
-    margin-top: 4%;
-  }
-
-  .approach-card {
-    background: white;
-    padding: 6% 5%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .approach-card::before {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--red);
-  }
-
-  .approach-num {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 3vw;
-    font-weight: 700;
-    color: rgba(227,24,55,0.15);
-    line-height: 1;
-  }
-
-  .approach-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 1.3vw;
-    font-weight: 700;
-    color: var(--dark);
-    line-height: 1.2;
-  }
-
-  .approach-body {
-    font-size: 1vw;
-    color: #555;
-    line-height: 1.65;
-    font-weight: 300;
-  }
+  .s5 { background: var(--cream); color: var(--dark); flex-direction: column; padding: 6% 8%; }
+  .approach-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2%; flex: 1; margin-top: 4%; }
+  .approach-card { background: white; padding: 6% 5%; display: flex; flex-direction: column; gap: 10px; position: relative; overflow: hidden; }
+  .approach-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--red); }
+  .approach-num { font-family: 'Barlow Condensed', sans-serif; font-size: 3vw; font-weight: 700; color: rgba(227,24,55,0.15); line-height: 1; }
+  .approach-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.3vw; font-weight: 700; color: var(--dark); line-height: 1.2; }
+  .approach-body { font-size: 1vw; color: #555; line-height: 1.65; font-weight: 300; }
 
   /* ── SLIDE 6 ── */
-  .s6 {
-    background: var(--dark);
-    flex-direction: row;
-    align-items: stretch;
-  }
-
-  .s6-left {
-    width: 40%;
-    background: var(--red);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 8% 7%;
-  }
-
-  .s6-left-eyebrow {
-    font-size: 0.75vw;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.6);
-    margin-bottom: 6%;
-  }
-
-  .s6-left-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 3vw;
-    font-weight: 700;
-    font-style: normal;
-    color: var(--white);
-    line-height: 1.1;
-  }
-
-  .s6-left-body {
-    font-size: 0.85vw;
-    color: rgba(255,255,255,0.75);
-    font-weight: 300;
-    line-height: 1.7;
-    margin-top: 5%;
-  }
-
-  .s6-right {
-    width: 60%;
-    padding: 6% 7%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 4%;
-  }
-
-  .impact-row {
-    display: flex;
-    align-items: center;
-    gap: 5%;
-    padding-bottom: 4%;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-  }
+  .s6 { background: var(--dark); flex-direction: row; align-items: stretch; }
+  .s6-left { width: 40%; background: var(--red); display: flex; flex-direction: column; justify-content: center; padding: 8% 7%; }
+  .s6-left-eyebrow { font-size: 0.75vw; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 6%; }
+  .s6-left-title { font-family: 'Barlow Condensed', sans-serif; font-size: 3vw; font-weight: 700; color: var(--white); line-height: 1.1; }
+  .s6-left-body { font-size: 0.85vw; color: rgba(255,255,255,0.75); font-weight: 300; line-height: 1.7; margin-top: 5%; }
+  .s6-right { width: 60%; padding: 6% 7%; display: flex; flex-direction: column; justify-content: center; gap: 4%; }
+  .impact-row { display: flex; align-items: center; gap: 5%; padding-bottom: 4%; border-bottom: 1px solid rgba(255,255,255,0.07); }
   .impact-row:last-child { border-bottom: none; padding-bottom: 0; }
-
-  .impact-num {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 3vw;
-    font-weight: 700;
-    color: var(--red);
-    line-height: 1;
-    min-width: 30%;
-  }
-
-  .impact-label {
-    font-size: 1vw;
-    color: rgba(255,255,255,0.6);
-    font-weight: 300;
-    line-height: 1.5;
-  }
+  .impact-num { font-family: 'Barlow Condensed', sans-serif; font-size: 3vw; font-weight: 700; color: var(--red); line-height: 1; min-width: 30%; }
+  .impact-label { font-size: 1vw; color: rgba(255,255,255,0.6); font-weight: 300; line-height: 1.5; }
 
   /* ── SLIDE 7 ── */
-  .s7 {
-    background: var(--cream);
-    color: var(--dark);
-    flex-direction: column;
-    padding: 6% 8%;
-  }
-
-  .next-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 2%;
-    flex: 1;
-    margin-top: 4%;
-  }
-
-  .next-card {
-    background: var(--dark);
-    padding: 6% 5%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .next-num {
-    font-size: 0.75vw;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--red);
-    font-weight: 500;
-  }
-
-  .next-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 1.3vw;
-    font-weight: 700;
-    color: var(--white);
-    line-height: 1.2;
-  }
-
-  .next-body {
-    font-size: 1vw;
-    color: rgba(255,255,255,0.5);
-    line-height: 1.65;
-    font-weight: 300;
-  }
+  .s7 { background: var(--cream); color: var(--dark); flex-direction: column; padding: 6% 8%; }
+  .next-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2%; flex: 1; margin-top: 4%; }
+  .next-card { background: var(--dark); padding: 6% 5%; display: flex; flex-direction: column; gap: 10px; }
+  .next-num { font-size: 0.75vw; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red); font-weight: 500; }
+  .next-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.3vw; font-weight: 700; color: var(--white); line-height: 1.2; }
+  .next-body { font-size: 1vw; color: rgba(255,255,255,0.5); line-height: 1.65; font-weight: 300; }
 
   /* ── SLIDE 8 ── */
-  .s8 {
-    background: var(--dark);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 8% 14%;
-    text-align: center;
-    position: relative;
-  }
-
-  .s8::before {
-    content: '✦';
-    position: absolute;
-    top: 6%; right: 7%;
-    font-size: 1.5vw;
-    color: var(--red);
-    opacity: 0.4;
-  }
-
-  .s8::after {
-    content: '✦';
-    position: absolute;
-    bottom: 6%; left: 7%;
-    font-size: 1vw;
-    color: var(--red);
-    opacity: 0.25;
-  }
-
-  .s8-eyebrow {
-    font-size: 0.75vw;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 5%;
-    font-weight: 400;
-  }
-
-  .s8-quote {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 3vw;
-    font-style: italic;
-    font-weight: 300;
-    color: var(--white);
-    line-height: 1.3;
-    max-width: 80%;
-    margin-bottom: 5%;
-  }
-
-  .s8-divider {
-    width: 40px;
-    height: 2px;
-    background: var(--red);
-    margin: 0 auto 4%;
-  }
-
-  .footer-bar {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--red);
-  }
-
-  .footer-name {
-    position: absolute;
-    bottom: 1.5%; left: 3%;
-    font-size: 0.7vw;
-    color: rgba(255,255,255,0.2);
-    font-weight: 300;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .footer-name-dark {
-    position: absolute;
-    bottom: 1.5%; left: 3%;
-    font-size: 0.7vw;
-    color: rgba(0,0,0,0.2);
-    font-weight: 300;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
+  .s8 { background: var(--dark); flex-direction: column; justify-content: center; align-items: center; padding: 8% 14%; text-align: center; position: relative; }
+  .s8::before { content: '✦'; position: absolute; top: 6%; right: 7%; font-size: 1.5vw; color: var(--red); opacity: 0.4; }
+  .s8::after { content: '✦'; position: absolute; bottom: 6%; left: 7%; font-size: 1vw; color: var(--red); opacity: 0.25; }
+  .s8-eyebrow { font-size: 0.75vw; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 5%; font-weight: 400; }
+  .s8-quote { font-family: 'Barlow Condensed', sans-serif; font-size: 3vw; font-style: italic; font-weight: 300; color: var(--white); line-height: 1.3; max-width: 80%; margin-bottom: 5%; }
+  .s8-divider { width: 40px; height: 2px; background: var(--red); margin: 0 auto 4%; }
+  .footer-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--red); }
 
   @media print {
     .nav { display: none; }
@@ -620,7 +215,6 @@
 </style>
 </head>
 <body>
-
 <div class="deck">
 
   <!-- SLIDE 1 -->
@@ -628,16 +222,12 @@
     <div class="slide s1">
       <div class="s1-left">
         <div class="s1-tag">Creative Strategy Brief · Live Nation / C3 Presents</div>
-        <div class="s1-title">
-          What 28 Music Festivals<br>Taught Me About the Gap<br>Between <em>Gut Feel</em><br>and Growth
-        </div>
-        <div class="s1-sub">
-          A strategic case study on bringing data-driven<br>
-          thinking to the business of live entertainment.
-        </div>
+        <div class="s1-title">What 28 Music Festivals<br>Taught Me About the Gap<br>Between <em>Gut Feel</em><br>and Growth</div>
+        <div class="s1-sub">A strategic case study on bringing data-driven<br>thinking to the business of live entertainment.</div>
       </div>
       <div class="s1-right">
-        <div class="s1-author">Pooja Pisharody</div>
+        <!-- FIX 2: using same .author-tag class as all other slides -->
+        <div class="author-tag">Pooja Pisharody</div>
         <div class="s1-stats">
           <div class="s1-stat">
             <div class="s1-stat-num">28</div>
@@ -659,7 +249,7 @@
   <!-- SLIDE 2 -->
   <div class="slide-wrapper" id="slide-2">
     <div class="slide s2">
-      <div style="position:absolute; top:4%; right:4%; font-family:'DM Sans',sans-serif; font-size:0.7vw; color:rgba(0,0,0,0.2); letter-spacing:0.08em; text-transform:uppercase; z-index:10;">Pooja Pisharody</div>
+      <div class="author-tag-dark">Pooja Pisharody</div>
       <div class="slide-header">
         <span class="slide-num">01</span>
         <div class="slide-title-light">Live Entertainment at Scale</div>
@@ -668,82 +258,64 @@
         <div class="industry-card">
           <div class="industry-card-num">The Company</div>
           <div class="industry-card-title">Live Nation & C3 Presents</div>
-          <div class="industry-card-body">
-            Live Nation is the world's largest live entertainment company with 600M+ fans annually. C3 Presents sits inside Live Nation, representing its music festival portfolio of 28 global music festivals including, Lollapalooza, Bonnaroo, Governors Ball, and Austin City Limits.
-          </div>
+          <div class="industry-card-body">Live Nation is the world's largest live entertainment company with 600M+ fans annually. C3 Presents sits inside Live Nation, representing its music festival portfolio of 28 global music festivals including, Lollapalooza, Bonnaroo, Governors Ball, and Austin City Limits.</div>
         </div>
         <div class="industry-card">
           <div class="industry-card-num">The Revenue Model</div>
           <div class="industry-card-title">Three Streams, Infinite Complexity</div>
-          <div class="industry-card-body">
-            Festival revenue runs on three revenue streams: ticket sales, sponsorships, and on-site spend. Each stream behaves differently across markets, lineup tiers, and economic conditions, requiring strategy, not just spreadsheets.
-          </div>
+          <div class="industry-card-body">Festival revenue runs on three revenue streams: ticket sales, sponsorships, and on-site spend. Each stream behaves differently across markets, lineup tiers, and economic conditions, requiring strategy, not just spreadsheets.</div>
         </div>
         <div class="industry-card">
           <div class="industry-card-num">The Moment</div>
           <div class="industry-card-title">Post-COVID Rebound & New Pressure</div>
-          <div class="industry-card-body">
-            2023 – 2025 saw record demand for live music and moreover, record operational complexity. In this environment, financial strategy stopped being a second-thought and became a front-line competitive advantage.
-          </div>
+          <div class="industry-card-body">2023 – 2025 saw record demand for live music and moreover, record operational complexity. In this environment, financial strategy stopped being a second-thought and became a front-line competitive advantage.</div>
         </div>
       </div>
-      <div class="footer-name-dark">Pooja Pisharody · Live Nation Case Study</div>
     </div>
   </div>
 
   <!-- SLIDE 3 -->
   <div class="slide-wrapper" id="slide-3">
     <div class="slide s3">
-      <div style="position:absolute; top:4%; right:4%; font-family:'DM Sans',sans-serif; font-size:0.7vw; color:rgba(255,255,255,0.2); letter-spacing:0.08em; text-transform:uppercase; z-index:10;">Pooja Pisharody</div>
+      <div class="author-tag">Pooja Pisharody</div>
       <div class="slide-header">
-        <span class="slide-num" style="color: var(--red)">02</span>
+        <span class="slide-num" style="color:var(--red)">02</span>
         <div class="slide-title-dark">The Gut Feel Problem</div>
       </div>
       <div class="s3-grid">
         <div class="problem-card">
           <div class="problem-icon">→</div>
           <div class="problem-title">Pricing Is Static</div>
-          <div class="problem-body">
-            Festival pricing historically doesn't reflect dynamic demand. Regional differences, lineup changes, and macro conditions aren't built into ticket tiers, leaving significant revenue on the table.
-          </div>
+          <div class="problem-body">Festival pricing historically doesn't reflect dynamic demand. Regional differences, lineup changes, and macro conditions aren't built into ticket tiers, leaving significant revenue on the table.</div>
         </div>
         <div class="problem-card">
           <div class="problem-icon">→</div>
           <div class="problem-title">Reporting Is Reactive</div>
-          <div class="problem-body">
-            Performance issues get caught after they impact the bottom line, not before. Without real-time visibility, leadership makes decisions on incomplete information, consistently, across 28 festivals.
-          </div>
+          <div class="problem-body">Performance issues get caught after they impact the bottom line, not before. Without real-time visibility, leadership makes decisions on incomplete information, consistently, across 28 festivals.</div>
         </div>
         <div class="problem-card">
           <div class="problem-icon">→</div>
           <div class="problem-title">Learnings Don't Travel</div>
-          <div class="problem-body">
-            What works at ACL doesn't automatically inform Lollapalooza. Each festival operates in its own data silo, preventing the portfolio from compounding its own knowledge.
-          </div>
+          <div class="problem-body">What works at ACL doesn't automatically inform Lollapalooza. Each festival operates in its own data silo, preventing the portfolio from compounding its own knowledge.</div>
         </div>
       </div>
-      <div class="footer-name">Pooja Pisharody · Live Nation Case Study</div>
     </div>
   </div>
 
   <!-- SLIDE 4 -->
   <div class="slide-wrapper" id="slide-4">
     <div class="slide s4">
-      <div style="position:absolute; top:4%; right:4%; font-family:'DM Sans',sans-serif; font-size:0.7vw; color:rgba(255,255,255,0.2); letter-spacing:0.08em; text-transform:uppercase; z-index:10;">Pooja Pisharody</div>
+      <div class="author-tag">Pooja Pisharody</div>
       <div class="s4-eyebrow">The Core Insight</div>
-      <div class="s4-quote">
-        "Willingness to pay is the most honest signal in live entertainment."
-      </div>
-      <div class="s4-sub">
-        Ticket pricing isn't just a revenue lever - it's a consumer behavior signal. When you model demand curves by region, artist tier, and historical sell-through rates, you're not just optimizing price. You're building a real-time map of fan loyalty, cultural relevance, and brand equity.
-      </div>
+      <div class="s4-quote">"Willingness to pay is the most honest signal in live entertainment."</div>
+      <div class="s4-sub">Ticket pricing isn't just a revenue lever - it's a consumer behavior signal. When you model demand curves by region, artist tier, and historical sell-through rates, you're not just optimizing price. You're building a real-time map of fan loyalty, cultural relevance, and brand equity.</div>
     </div>
   </div>
 
   <!-- SLIDE 5 -->
   <div class="slide-wrapper" id="slide-5">
     <div class="slide s5">
-      <div style="position:absolute; top:4%; right:4%; font-family:'DM Sans',sans-serif; font-size:0.7vw; color:rgba(0,0,0,0.2); letter-spacing:0.08em; text-transform:uppercase; z-index:10;">Pooja Pisharody</div>
+      <div class="author-tag-dark">Pooja Pisharody</div>
       <div class="slide-header">
         <span class="slide-num">03</span>
         <div class="slide-title-light">From Spreadsheet to Strategy — What I Built</div>
@@ -752,39 +324,30 @@
         <div class="approach-card">
           <div class="approach-num">01</div>
           <div class="approach-title">Volume-Weighted Average Pricing Model</div>
-          <div class="approach-body">
-            Built an experimental pricing framework across ticket tiers and regional demand curves — the first dynamic pricing model applied consistently across C3's full festival portfolio. This pricing model is based off the same technical formula used for trading stocks.
-          </div>
+          <div class="approach-body">Built an experimental pricing framework across ticket tiers and regional demand curves — the first dynamic pricing model applied consistently across C3's full festival portfolio. This pricing model is based off the same technical formula used for trading stocks.</div>
         </div>
         <div class="approach-card">
           <div class="approach-num">02</div>
           <div class="approach-title">Executive Performance Dashboards</div>
-          <div class="approach-body">
-            Developed reporting tools giving COO, CFO, and CEO real-time visibility across entire festival portfolio, replacing post-event recaps with live operational intelligence.
-          </div>
+          <div class="approach-body">Developed reporting tools giving COO, CFO, and CEO real-time visibility across entire festival portfolio, replacing post-event recaps with live operational intelligence.</div>
         </div>
         <div class="approach-card">
           <div class="approach-num">03</div>
           <div class="approach-title">Cross-Functional Infrastructure</div>
-          <div class="approach-body">
-            Led initiatives aligning finance, operations, and marketing to streamline vendor negotiations and resource allocation, turning financial analysis into operational action.
-          </div>
+          <div class="approach-body">Led initiatives aligning finance, operations, and marketing to streamline vendor negotiations and resource allocation, turning financial analysis into operational action.</div>
         </div>
       </div>
-      <div class="footer-name-dark">Pooja Pisharody · Live Nation Case Study</div>
     </div>
   </div>
 
   <!-- SLIDE 6 -->
   <div class="slide-wrapper" id="slide-6">
     <div class="slide s6">
-      <div style="position:absolute; top:4%; right:4%; font-family:'DM Sans',sans-serif; font-size:0.7vw; color:rgba(255,255,255,0.2); letter-spacing:0.08em; text-transform:uppercase; z-index:10;">Pooja Pisharody</div>
+      <div class="author-tag">Pooja Pisharody</div>
       <div class="s6-left">
         <div class="s6-left-eyebrow">04 · The Impact</div>
         <div class="s6-left-title">What Changed</div>
-        <div class="s6-left-body">
-          Financial strategy went from a reporting function to a decision-making engine. Leadership stopped asking "what happened" and started asking "what should we do next."
-        </div>
+        <div class="s6-left-body">Financial strategy went from a reporting function to a decision-making engine. Leadership stopped asking "what happened" and started asking "what should we do next."</div>
       </div>
       <div class="s6-right">
         <div class="impact-row">
@@ -800,14 +363,13 @@
           <div class="impact-label">Caught a $750K misallocation through standardized financial reviews — protecting portfolio accuracy going forward</div>
         </div>
       </div>
-      <div class="footer-name">Pooja Pisharody · Live Nation Case Study</div>
     </div>
   </div>
 
   <!-- SLIDE 7 -->
   <div class="slide-wrapper" id="slide-7">
     <div class="slide s7">
-      <div style="position:absolute; top:4%; right:4%; font-family:'DM Sans',sans-serif; font-size:0.7vw; color:rgba(0,0,0,0.2); letter-spacing:0.08em; text-transform:uppercase; z-index:10;">Pooja Pisharody</div>
+      <div class="author-tag-dark">Pooja Pisharody</div>
       <div class="slide-header">
         <span class="slide-num">05</span>
         <div class="slide-title-light">The Opportunity C3 Hasn't Captured Yet</div>
@@ -816,37 +378,28 @@
         <div class="next-card">
           <div class="next-num">01 · Fan Intelligence</div>
           <div class="next-title">Dynamic Pricing at the Fan Level</div>
-          <div class="next-body">
-            Move beyond tier-based pricing toward individualized offers based on purchase history, regional loyalty, and streaming behavior. Spotify already knows who the superfans are: a data partnership could transform festival ticket sales.
-          </div>
+          <div class="next-body">Move beyond tier-based pricing toward individualized offers based on purchase history, regional loyalty, and streaming behavior. Spotify already knows who the superfans are: a data partnership could transform festival ticket sales.</div>
         </div>
         <div class="next-card">
           <div class="next-num">02 · Retention</div>
           <div class="next-title">Cross-Festival Loyalty Infrastructure</div>
-          <div class="next-body">
-            There is no C3 loyalty program. Fans who attend ACL, Lollapalooza, and Bonnaroo are the most valuable customers in the portfolio and they're treated as strangers at each event. A unified fan identity layer would unlock major retained revenue.
-          </div>
+          <div class="next-body">There is no C3 loyalty program. Fans who attend ACL, Lollapalooza, and Bonnaroo are the most valuable customers in the portfolio and they're treated as strangers at each event. A unified fan identity layer would unlock major retained revenue.</div>
         </div>
         <div class="next-card">
           <div class="next-num">03 · Operations</div>
           <div class="next-title">Real-Time Financial Operations</div>
-          <div class="next-body">
-            Building real-time monitoring into festival operations: weather, sell-through rate, vendor spend, would allow dynamic resource reallocation mid-event, not just after-action fixes.
-          </div>
+          <div class="next-body">Building real-time monitoring into festival operations: weather, sell-through rate, vendor spend, would allow dynamic resource reallocation mid-event, not just after-action fixes.</div>
         </div>
       </div>
-      <div class="footer-name-dark">Pooja Pisharody · Live Nation Case Study</div>
     </div>
   </div>
 
   <!-- SLIDE 8 -->
   <div class="slide-wrapper" id="slide-8">
     <div class="slide s8">
-      <div style="position:absolute; top:4%; right:4%; font-family:'DM Sans',sans-serif; font-size:0.7vw; color:rgba(255,255,255,0.2); letter-spacing:0.08em; text-transform:uppercase; z-index:10;">Pooja Pisharody</div>
+      <div class="author-tag">Pooja Pisharody</div>
       <div class="s8-eyebrow">My Point of View</div>
-      <div class="s8-quote">
-        "The future of live entertainment isn't about selling more tickets. It's about knowing your fans well enough that they never want to buy a ticket to anything else."
-      </div>
+      <div class="s8-quote">"The future of live entertainment isn't about selling more tickets. It's about knowing your fans well enough that they never want to buy a ticket to anything else."</div>
       <div class="s8-divider"></div>
       <div class="footer-bar"></div>
     </div>
@@ -863,7 +416,6 @@
 <script>
   let current = 1;
   const total = 8;
-
   function changeSlide(dir) {
     document.getElementById('slide-' + current).classList.remove('active');
     current += dir;
@@ -873,12 +425,10 @@
     document.getElementById('next').disabled = current === total;
     window.scrollTo(0,0);
   }
-
   document.addEventListener('keydown', function(e) {
     if (e.key === 'ArrowRight' && current < total) changeSlide(1);
     if (e.key === 'ArrowLeft' && current > 1) changeSlide(-1);
   });
 </script>
-
 </body>
 </html>

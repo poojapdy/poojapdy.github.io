@@ -24,20 +24,24 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  .slide { width: 100%; aspect-ratio: 16/9; position: relative; display: flex; overflow: hidden; }
+  /* FIX 1: height:100vh instead of aspect-ratio to prevent zoom */
+  .slide { width: 100%; height: 100vh; position: relative; display: flex; overflow: hidden; }
   .slide-wrapper { display: none; width: 100%; }
   .slide-wrapper.active { display: block; }
 
+  /* FIX 2: unified author tag matching Live Nation exactly */
   .author-tag {
     position: absolute; top: 4%; right: 4%;
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.7vw; color: rgba(255,255,255,0.22);
+    font-size: 0.75vw; font-weight: 300;
+    color: rgba(255,255,255,0.25);
     letter-spacing: 0.08em; text-transform: uppercase; z-index: 10;
   }
   .author-tag-dark {
     position: absolute; top: 4%; right: 4%;
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.7vw; color: rgba(0,0,0,0.2);
+    font-size: 0.75vw; font-weight: 300;
+    color: rgba(0,0,0,0.2);
     letter-spacing: 0.08em; text-transform: uppercase; z-index: 10;
   }
 
@@ -59,45 +63,34 @@
   .nav button:disabled:hover { background: none; border-color: rgba(255,255,255,0.2); }
   .nav-counter { font-size: 13px; color: rgba(255,255,255,0.4); font-weight: 300; min-width: 60px; text-align: center; }
 
-  /* ══ SLIDE 1 — COVER ══ */
+  /* SLIDE 1 */
   .s1 { background: #0a1a12; flex-direction: row; }
-  .s1-left {
-    width: 58%; background: #071510; padding: 8% 7%;
-    display: flex; flex-direction: column; justify-content: center; gap: 20px;
-    border-right: 3px solid var(--green-light);
-  }
+  .s1-left { width: 58%; background: #071510; padding: 8% 7%; display: flex; flex-direction: column; justify-content: center; gap: 20px; border-right: 3px solid var(--green-light); }
   .s1-eyebrow { font-size: 0.85vw; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green-light); font-weight: 400; }
   .s1-title { font-size: 4.2vw; font-weight: 700; line-height: 1.0; color: var(--white); }
   .s1-title em { font-style: italic; color: var(--green-light); }
   .s1-sub { font-size: 1vw; color: rgba(255,255,255,0.4); font-weight: 300; line-height: 1.7; }
-  .s1-right {
-    width: 42%; background: #0d1f17; padding: 6%;
-    display: flex; flex-direction: column; justify-content: flex-end; gap: 0;
-  }
+  .s1-right { width: 42%; background: #0d1f17; padding: 6%; display: flex; flex-direction: column; justify-content: flex-end; gap: 0; }
   .s1-stat { padding-bottom: 2.5%; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 2.5%; }
   .s1-stat:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
   .s1-stat-num { font-size: 2.8vw; font-weight: 700; color: var(--green-light); line-height: 1; }
   .s1-stat-label { font-size: 0.75vw; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.06em; }
 
-  /* ══ SLIDE 2 — THE CONTEXT ══ */
+  /* SLIDE 2 */
   .s2 { background: var(--cream); color: var(--dark); flex-direction: column; padding: 6% 8%; }
   .slide-header { display: flex; align-items: baseline; gap: 14px; margin-bottom: 4%; }
-  .slide-num { font-size: 1vw; font-weight: 400; color: var(--green); font-style: italic; }
+  .slide-num { font-size: 1vw; font-weight: 400; color: var(--green); }
   .slide-h { font-size: 2.6vw; font-weight: 700; color: var(--dark); line-height: 1.1; }
   .slide-h-light { font-size: 2.6vw; font-weight: 700; color: var(--white); line-height: 1.1; }
-
   .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2%; flex: 1; }
   .col-card { background: white; padding: 5%; display: flex; flex-direction: column; gap: 8px; border-top: 3px solid var(--green); }
   .col-card-label { font-size: 0.75vw; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); font-weight: 500; }
   .col-card-title { font-size: 1.3vw; font-weight: 700; color: var(--dark); line-height: 1.2; }
   .col-card-body { font-size: 1vw; color: #555; line-height: 1.65; font-weight: 300; }
 
-  /* ══ SLIDE 3 — THE STORYTELLING PROBLEM ══ */
+  /* SLIDE 3 */
   .s3 { background: var(--dark2); flex-direction: row; align-items: stretch; }
-  .s3-left {
-    width: 45%; background: var(--green);
-    padding: 8% 6%; display: flex; flex-direction: column; justify-content: center; gap: 16px;
-  }
+  .s3-left { width: 45%; background: var(--green); padding: 8% 6%; display: flex; flex-direction: column; justify-content: center; gap: 16px; }
   .s3-left-eye { font-size: 0.75vw; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
   .s3-left-title { font-size: 3vw; font-weight: 700; color: var(--white); line-height: 1.05; }
   .s3-left-body { font-size: 1vw; color: rgba(255,255,255,0.7); font-weight: 300; line-height: 1.7; }
@@ -109,13 +102,13 @@
   .tension-title { font-size: 1.2vw; font-weight: 600; color: var(--white); }
   .tension-body { font-size: 1vw; color: rgba(255,255,255,0.55); font-weight: 300; line-height: 1.6; }
 
-  /* ══ SLIDE 4 — THE INSIGHT ══ */
+  /* SLIDE 4 */
   .s4 { background: var(--green); flex-direction: column; justify-content: center; align-items: center; padding: 8% 12%; text-align: center; }
   .s4-eye { font-size: 0.8vw; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 4%; }
   .s4-quote { font-size: 3.4vw; font-style: italic; font-weight: 300; color: var(--white); line-height: 1.2; max-width: 82%; margin-bottom: 4%; }
   .s4-sub { font-size: 1vw; color: rgba(255,255,255,0.7); font-weight: 300; line-height: 1.7; max-width: 62%; }
 
-  /* ══ SLIDE 5 — WHAT I BUILT ══ */
+  /* SLIDE 5 */
   .s5 { background: var(--cream); color: var(--dark); flex-direction: column; padding: 6% 8%; }
   .approach-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2%; flex: 1; margin-top: 4%; }
   .approach-card { background: white; padding: 6% 5%; display: flex; flex-direction: column; gap: 10px; position: relative; overflow: hidden; }
@@ -124,7 +117,7 @@
   .approach-title { font-size: 1.3vw; font-weight: 700; color: var(--dark); line-height: 1.2; }
   .approach-body { font-size: 1vw; color: #555; line-height: 1.65; font-weight: 300; }
 
-  /* ══ SLIDE 6 — IMPACT ══ */
+  /* SLIDE 6 */
   .s6 { background: var(--dark); flex-direction: row; align-items: stretch; }
   .s6-left { width: 38%; background: var(--green); padding: 8% 6%; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
   .s6-left-eye { font-size: 0.75vw; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
@@ -136,7 +129,7 @@
   .impact-num { font-size: 2.8vw; font-weight: 700; color: var(--green-light); line-height: 1; min-width: 28%; }
   .impact-label { font-size: 1vw; color: rgba(255,255,255,0.6); font-weight: 300; line-height: 1.55; }
 
-  /* ══ SLIDE 7 — WHAT'S NEXT ══ */
+  /* SLIDE 7 */
   .s7 { background: #071510; color: var(--white); flex-direction: column; padding: 6% 8%; }
   .next-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2%; flex: 1; margin-top: 4%; }
   .next-card { background: #0d1f17; padding: 6% 5%; display: flex; flex-direction: column; gap: 10px; border-top: 2px solid rgba(0,166,81,0.3); }
@@ -144,7 +137,7 @@
   .next-title { font-size: 1.3vw; font-weight: 700; color: var(--white); line-height: 1.2; }
   .next-body { font-size: 1vw; color: rgba(255,255,255,0.5); line-height: 1.65; font-weight: 300; }
 
-  /* ══ SLIDE 8 — TAKEAWAY ══ */
+  /* SLIDE 8 */
   .s8 { background: var(--dark); flex-direction: column; justify-content: center; align-items: center; padding: 8% 14%; text-align: center; position: relative; }
   .s8::before { content: '✦'; position: absolute; top: 6%; right: 7%; font-size: 1.5vw; color: var(--green-light); opacity: 0.3; }
   .s8::after { content: '✦'; position: absolute; bottom: 6%; left: 7%; font-size: 1vw; color: var(--green-light); opacity: 0.2; }
@@ -162,7 +155,7 @@
 </head>
 <body>
 
-<!-- SLIDE 1 — COVER -->
+<!-- SLIDE 1 -->
 <div class="slide-wrapper active" id="slide-1">
   <div class="slide s1">
     <div class="s1-left">
@@ -172,23 +165,14 @@
     </div>
     <div class="s1-right">
       <div class="author-tag">Pooja Pisharody</div>
-      <div class="s1-stat">
-        <div class="s1-stat-num">$85M+</div>
-        <div class="s1-stat-label">Financing deals executed</div>
-      </div>
-      <div class="s1-stat">
-        <div class="s1-stat-num">$50M</div>
-        <div class="s1-stat-label">Private placement led</div>
-      </div>
-      <div class="s1-stat">
-        <div class="s1-stat-num">3</div>
-        <div class="s1-stat-label">Sectors — Healthcare, Tech, Real Estate</div>
-      </div>
+      <div class="s1-stat"><div class="s1-stat-num">$85M+</div><div class="s1-stat-label">Financing deals executed</div></div>
+      <div class="s1-stat"><div class="s1-stat-num">$50M</div><div class="s1-stat-label">Private placement led</div></div>
+      <div class="s1-stat"><div class="s1-stat-num">3</div><div class="s1-stat-label">Sectors — Healthcare, Tech, Real Estate</div></div>
     </div>
   </div>
 </div>
 
-<!-- SLIDE 2 — THE CONTEXT -->
+<!-- SLIDE 2 -->
 <div class="slide-wrapper" id="slide-2">
   <div class="slide s2">
     <div class="author-tag-dark">Pooja Pisharody</div>
@@ -216,7 +200,7 @@
   </div>
 </div>
 
-<!-- SLIDE 3 — THE STORYTELLING PROBLEM -->
+<!-- SLIDE 3 -->
 <div class="slide-wrapper" id="slide-3">
   <div class="slide s3">
     <div class="author-tag">Pooja Pisharody</div>
@@ -251,7 +235,7 @@
   </div>
 </div>
 
-<!-- SLIDE 4 — THE INSIGHT -->
+<!-- SLIDE 4 -->
 <div class="slide-wrapper" id="slide-4">
   <div class="slide s4">
     <div class="author-tag">Pooja Pisharody</div>
@@ -261,7 +245,7 @@
   </div>
 </div>
 
-<!-- SLIDE 5 — WHAT I BUILT -->
+<!-- SLIDE 5 -->
 <div class="slide-wrapper" id="slide-5">
   <div class="slide s5">
     <div class="author-tag-dark">Pooja Pisharody</div>
@@ -289,7 +273,7 @@
   </div>
 </div>
 
-<!-- SLIDE 6 — IMPACT -->
+<!-- SLIDE 6 -->
 <div class="slide-wrapper" id="slide-6">
   <div class="slide s6">
     <div class="author-tag">Pooja Pisharody</div>
@@ -315,7 +299,7 @@
   </div>
 </div>
 
-<!-- SLIDE 7 — WHAT'S NEXT -->
+<!-- SLIDE 7 -->
 <div class="slide-wrapper" id="slide-7">
   <div class="slide s7">
     <div class="author-tag">Pooja Pisharody</div>
@@ -337,13 +321,13 @@
       <div class="next-card">
         <div class="next-num">03 · Translation</div>
         <div class="next-title">The Gap Between Science and Story Is a Business Opportunity</div>
-        <div class="next-body">Healthcare-Biotech, DeepTech, and Climate Tech are all full of world-changing companies that cannot explain themselves to a general audience. Creative strategists who can bridge that gap are extremely rare and extremely valuable.</div>
+        <div class="next-body">Healthcare-Biotech, DeepTech, and Climate Tech are full of world-changing companies that cannot explain themselves to a general audience. Creative strategists who can bridge that gap are extremely rare and extremely valuable.</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- SLIDE 8 — TAKEAWAY -->
+<!-- SLIDE 8 -->
 <div class="slide-wrapper" id="slide-8">
   <div class="slide s8">
     <div class="author-tag">Pooja Pisharody</div>
@@ -355,7 +339,6 @@
   </div>
 </div>
 
-<!-- NAV -->
 <div class="nav">
   <button id="prev" onclick="changeSlide(-1)" disabled>←</button>
   <span class="nav-counter" id="counter">1 / 8</span>
@@ -379,6 +362,5 @@
     if (e.key === 'ArrowLeft' && current > 1) changeSlide(-1);
   });
 </script>
-
 </body>
 </html>

@@ -44,32 +44,17 @@
       overflow: hidden;
       border: 1px solid #2a3a2c;
     }
-    .photo-circle img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+    .photo-circle img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-    .left-name {
-      font-size: 26px;
-      font-weight: 400;
-      letter-spacing: 0.01em;
-      text-align: center;
-    }
+    .left-name { font-size: 26px; font-weight: 400; letter-spacing: 0.01em; text-align: center; }
 
     .left-socials { margin-top: auto; }
 
     .social-icon {
-      width: 36px;
-      height: 36px;
-      border: 1px solid #3a5040;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0.7;
-      transition: opacity 0.2s, border-color 0.2s;
+      width: 36px; height: 36px;
+      border: 1px solid #3a5040; border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0.7; transition: opacity 0.2s, border-color 0.2s;
     }
     .social-icon:hover { opacity: 1; border-color: #6a9070; }
     .social-icon svg { width: 16px; height: 16px; fill: #ddd8c4; }
@@ -77,31 +62,19 @@
     /* ── RIGHT ── */
     .right {
       padding: 56px 64px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      gap: 32px;
+      display: flex; flex-direction: column;
+      justify-content: flex-start; gap: 32px;
     }
 
     /* ── NAV ── */
-    .site-nav {
-      display: flex;
-      gap: 24px;
-    }
+    .site-nav { display: flex; gap: 24px; }
 
     .nav-link {
       font-family: 'DM Sans', sans-serif;
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #4a6a4e;
-      cursor: pointer;
-      transition: color 0.2s;
-      padding-bottom: 2px;
-      border: none;
-      border-bottom: 1px solid transparent;
+      font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: #4a6a4e; cursor: pointer; transition: color 0.2s;
+      padding-bottom: 2px; border: none; border-bottom: 1px solid transparent;
       background: none;
-      font-family: 'DM Sans', sans-serif;
     }
     .nav-link:hover { color: #ddd8c4; }
     .nav-link.active { color: #c8d4a0; border-bottom-color: #c8d4a0; }
@@ -110,267 +83,97 @@
     .page { display: none; flex-direction: column; gap: 32px; }
     .page.active { display: flex; }
 
-    /* ── HOME PAGE ── */
-    .top-section {
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-    }
+    /* ── HOME ── */
+    .top-section { display: flex; flex-direction: column; gap: 32px; }
 
-    .star-wrap {
-      position: relative;
-      width: 130px;
-      height: 90px;
-      display: inline-block;
-    }
+    .star-wrap { position: relative; width: 130px; height: 90px; display: inline-block; }
 
     .star {
-      font-size: 36px;
-      color: #c8d4a0;
-      display: inline-block;
-      animation: slowspin 8s linear infinite;
-      position: absolute;
-      top: 20px;
-      left: 40px;
-      cursor: default;
+      font-size: 36px; color: #c8d4a0;
+      display: inline-block; animation: slowspin 8s linear infinite;
+      position: absolute; top: 20px; left: 40px; cursor: default;
     }
     .star:hover { color: #ddd8c4; }
 
-    .speck {
-      position: absolute;
-      color: #c8d4a0;
-      animation: floatDrift linear infinite;
-      pointer-events: none;
-    }
+    .speck { position: absolute; color: #c8d4a0; animation: floatDrift linear infinite; pointer-events: none; }
     .speck:nth-child(2) { font-size:14px; top:4px;  left:10px;  animation-duration:3.1s; opacity:0.6; }
     .speck:nth-child(3) { font-size:10px; top:60px; left:5px;   animation-duration:4.4s; opacity:0.4; }
     .speck:nth-child(4) { font-size:16px; top:0px;  left:80px;  animation-duration:3.7s; opacity:0.7; }
     .speck:nth-child(5) { font-size:8px;  top:65px; left:95px;  animation-duration:5.2s; opacity:0.35; }
     .speck:nth-child(6) { font-size:12px; top:28px; left:108px; animation-duration:2.9s; opacity:0.5; }
 
-    @keyframes slowspin {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
-    }
-    @keyframes floatDrift {
-      0%   { transform: translateY(0px); }
-      50%  { transform: translateY(-5px); }
-      100% { transform: translateY(0px); }
-    }
+    @keyframes slowspin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes floatDrift { 0% { transform: translateY(0px); } 50% { transform: translateY(-5px); } 100% { transform: translateY(0px); } }
 
     .headline { display: flex; flex-direction: column; gap: 6px; }
 
     .headline-name {
-      font-size: clamp(32px, 4vw, 48px);
-      font-weight: 700;
-      font-style: italic;
-      color: #c8d4a0;
-      letter-spacing: -0.01em;
-      line-height: 1.05;
+      font-size: clamp(32px, 4vw, 48px); font-weight: 700; font-style: italic;
+      color: #c8d4a0; letter-spacing: -0.01em; line-height: 1.05;
     }
 
     .headline-line {
       font-family: 'EB Garamond', serif;
-      font-size: clamp(18px, 2.2vw, 24px);
-      font-weight: 400;
-      color: #8a9e8d;
-      font-style: italic;
-      line-height: 1.4;
+      font-size: clamp(18px, 2.2vw, 24px); font-weight: 400;
+      color: #8a9e8d; font-style: italic; line-height: 1.4;
     }
 
-    .timeline {
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      padding-left: 20px;
-      margin-top: 8px;
-    }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 5px;
-      top: 10px;
-      bottom: 10px;
-      width: 1px;
-      background: #2a3a2c;
-    }
-    .tl-item {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      padding: 10px 0 10px 20px;
-      position: relative;
-    }
-    .tl-item::before {
-      content: '';
-      position: absolute;
-      left: -15px;
-      top: 16px;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #4a6a4e;
-      border: 1px solid #2a3a2c;
-    }
-    .tl-co {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #4a6a4e;
-    }
-    .tl-role {
-      font-family: 'EB Garamond', serif;
-      font-size: 16px;
-      font-style: italic;
-      color: #8a9e8d;
-    }
+    .timeline { display: flex; flex-direction: column; position: relative; padding-left: 20px; margin-top: 8px; }
+    .timeline::before { content: ''; position: absolute; left: 5px; top: 10px; bottom: 10px; width: 1px; background: #2a3a2c; }
+    .tl-item { display: flex; flex-direction: column; gap: 2px; padding: 10px 0 10px 20px; position: relative; }
+    .tl-item::before { content: ''; position: absolute; left: -15px; top: 16px; width: 7px; height: 7px; border-radius: 50%; background: #4a6a4e; border: 1px solid #2a3a2c; }
+    .tl-co { font-family: 'DM Sans', sans-serif; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #4a6a4e; }
+    .tl-role { font-family: 'EB Garamond', serif; font-size: 16px; font-style: italic; color: #8a9e8d; }
 
     /* ── WORK PAGE ── */
     .work-list { display: flex; flex-direction: column; gap: 0; }
 
     .work-item {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      padding: 24px 0;
-      border-bottom: 1px solid #2a3a2c;
-      text-decoration: none;
-      color: inherit;
-      transition: opacity 0.2s;
-      cursor: pointer;
+      display: flex; align-items: center; gap: 28px;
+      padding: 24px 0; border-bottom: 1px solid #2a3a2c;
+      text-decoration: none; color: inherit;
+      transition: opacity 0.2s; cursor: pointer;
     }
     .work-item:first-child { border-top: 1px solid #2a3a2c; }
     .work-item:hover { opacity: 0.65; }
 
-    /* mini slide thumbnail rendered in HTML */
     .work-thumb {
-      width: 160px;
-      height: 90px;
-      flex-shrink: 0;
-      background: #0f0f0f;
-      border: 1px solid #2a3a2c;
-      overflow: hidden;
-      display: flex;
-      position: relative;
+      width: 160px; height: 90px; flex-shrink: 0;
+      background: #0f0f0f; border: 1px solid #2a3a2c;
+      overflow: hidden; display: flex; position: relative;
     }
 
     .thumb-l {
-      width: 55%;
-      background: #0a0a0a;
-      padding: 10px 8px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 4px;
+      width: 55%; background: #0a0a0a; padding: 10px 8px;
+      display: flex; flex-direction: column; justify-content: center; gap: 4px;
       border-right: 2px solid #E31837;
     }
-    .thumb-tag {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 4.5px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #E31837;
-    }
-    .thumb-title {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 7px;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.25;
-    }
+    .thumb-tag { font-family: 'DM Sans', sans-serif; font-size: 4.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #E31837; }
+    .thumb-title { font-family: 'DM Sans', sans-serif; font-size: 7px; font-weight: 700; color: #fff; line-height: 1.25; }
 
     .thumb-r {
-      width: 45%;
-      background: #141414;
-      padding: 8px 6px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      gap: 5px;
+      width: 45%; background: #141414; padding: 8px 6px;
+      display: flex; flex-direction: column; justify-content: flex-end; gap: 5px;
     }
-    .thumb-stat {
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-      padding-bottom: 5px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
+    .thumb-stat { display: flex; flex-direction: column; gap: 1px; padding-bottom: 5px; border-bottom: 1px solid rgba(255,255,255,0.06); }
     .thumb-stat:last-child { border-bottom: none; padding-bottom: 0; }
-    .thumb-num {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      color: #E31837;
-      line-height: 1;
-    }
-    .thumb-label {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 4px;
-      color: rgba(255,255,255,0.3);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    /* placeholder thumb for coming soon */
-    .work-thumb-placeholder {
-      width: 160px;
-      height: 90px;
-      flex-shrink: 0;
-      background: #1a1a1a;
-      border: 1px solid #2a3a2c;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .work-thumb-placeholder span {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 9px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #2a3a2c;
-    }
+    .thumb-num { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 700; color: #E31837; line-height: 1; }
+    .thumb-label { font-family: 'DM Sans', sans-serif; font-size: 4px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.05em; }
 
     .work-info { display: flex; flex-direction: column; gap: 5px; }
-
-    .work-co {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #4a6a4e;
-    }
-    .work-title-text {
-      font-family: 'EB Garamond', serif;
-      font-size: 19px;
-      font-style: italic;
-      color: #ddd8c4;
-      line-height: 1.3;
-    }
-    .work-arrow {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 11px;
-      color: #2a3a2c;
-      margin-top: 4px;
-    }
+    .work-co { font-family: 'DM Sans', sans-serif; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #4a6a4e; }
+    .work-title-text { font-family: 'EB Garamond', serif; font-size: 19px; font-style: italic; color: #ddd8c4; line-height: 1.3; }
+    .work-arrow { font-family: 'DM Sans', sans-serif; font-size: 11px; color: #4a6a4e; margin-top: 4px; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 860px) {
       .site-wrap { grid-template-columns: 1fr; }
-      .left {
-        border-right: none;
-        border-bottom: 1px solid #2a3a2c;
-        padding: 32px 28px;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: flex-start;
-        gap: 16px;
-      }
+      .left { border-right: none; border-bottom: 1px solid #2a3a2c; padding: 32px 28px; flex-direction: row; flex-wrap: wrap; align-items: flex-start; gap: 16px; }
       .photo-circle { width: 120px; }
       .left-name { font-size: 20px; text-align: left; }
       .left-socials { margin-top: 0; }
       .right { padding: 36px 28px; }
-      .work-thumb, .work-thumb-placeholder { width: 100px; height: 56px; }
+      .work-thumb { width: 100px; height: 56px; }
     }
   </style>
 </head>
@@ -396,13 +199,12 @@
   <!-- ── RIGHT ── -->
   <main class="right">
 
-    <!-- NAV -->
     <nav class="site-nav">
       <button class="nav-link active" onclick="showPage('home', this)">Info</button>
       <button class="nav-link" onclick="showPage('work', this)">Work</button>
     </nav>
 
-    <!-- ── HOME PAGE ── -->
+    <!-- HOME PAGE -->
     <div class="page active" id="page-home">
       <div class="top-section">
 
@@ -438,12 +240,12 @@
       </div>
     </div>
 
-    <!-- ── WORK PAGE ── -->
+    <!-- WORK PAGE -->
     <div class="page" id="page-work">
 
       <div class="work-list">
 
-        <!-- LIVE NATION — links to the case study file -->
+        <!-- LIVE NATION -->
         <a href="livenation-casestudy.html" class="work-item">
           <div class="work-thumb">
             <div class="thumb-l">
@@ -451,18 +253,9 @@
               <div class="thumb-title">What 28 Festivals Taught Me About Growth</div>
             </div>
             <div class="thumb-r">
-              <div class="thumb-stat">
-                <div class="thumb-num">28</div>
-                <div class="thumb-label">Festivals</div>
-              </div>
-              <div class="thumb-stat">
-                <div class="thumb-num">$7M+</div>
-                <div class="thumb-label">Cost savings</div>
-              </div>
-              <div class="thumb-stat">
-                <div class="thumb-num">2 YRS</div>
-                <div class="thumb-label">Strategy</div>
-              </div>
+              <div class="thumb-stat"><div class="thumb-num">28</div><div class="thumb-label">Festivals</div></div>
+              <div class="thumb-stat"><div class="thumb-num">$7M+</div><div class="thumb-label">Cost savings</div></div>
+              <div class="thumb-stat"><div class="thumb-num">2 YRS</div><div class="thumb-label">Strategy</div></div>
             </div>
           </div>
           <div class="work-info">
@@ -472,27 +265,54 @@
           </div>
         </a>
 
-        <!-- AMAZON — coming soon -->
-        <div class="work-item" style="cursor:default; opacity:0.4;">
-          <div class="work-thumb-placeholder">
-            <span>Coming soon</span>
+        <!-- SMBC -->
+        <a href="smbc-casestudy.html" class="work-item">
+          <div class="work-thumb" style="background:#0a1a12; border-color:#1a2d1e;">
+            <div class="thumb-l" style="background:#071510; border-right-color:#00a651;">
+              <div class="thumb-tag" style="color:#00a651;">SMBC</div>
+              <div class="thumb-title">What Investment Banking Taught Me About Storytelling</div>
+            </div>
+            <div class="thumb-r" style="background:#0d1f17;">
+              <div class="thumb-stat"><div class="thumb-num" style="color:#00a651;">$85M+</div><div class="thumb-label">Deals</div></div>
+              <div class="thumb-stat"><div class="thumb-num" style="color:#00a651;">$50M</div><div class="thumb-label">Placement</div></div>
+              <div class="thumb-stat"><div class="thumb-num" style="color:#00a651;">3</div><div class="thumb-label">Sectors</div></div>
+            </div>
           </div>
           <div class="work-info">
-            <div class="work-co">Amazon Devices</div>
-            <div class="work-title-text">The Lifetime Value Problem in Consumer Hardware</div>
-            <div class="work-arrow" style="color:#2a3a2c;">In progress</div>
+            <div class="work-co">Sumitomo Mitsui Banking Corporation</div>
+            <div class="work-title-text">The Pitch Deck Is a Creative Brief — What Banking Taught Me About Storytelling</div>
+            <div class="work-arrow">View case study →</div>
           </div>
-        </div>
+        </a>
 
-        <!-- SMBC — coming soon -->
-        <div class="work-item" style="cursor:default; opacity:0.4;">
-          <div class="work-thumb-placeholder">
-            <span>Coming soon</span>
+        <!-- BANK OF AMERICA PDF -->
+        <div class="work-item" onclick="togglePDF()" style="flex-direction:column; align-items:flex-start;">
+          <div style="display:flex; align-items:center; gap:28px; width:100%;">
+            <!-- Thumbnail matching Behance cover: light blue gradient, BofA logo, phone mockup feel -->
+            <div class="work-thumb" style="background:linear-gradient(135deg,#d6e8f5 0%,#eaf4fb 100%); border-color:#c8dde8; align-items:center; justify-content:center; flex-direction:column; gap:4px; overflow:hidden; position:relative;">
+              <div style="font-family:'DM Sans',sans-serif; font-size:8px; font-weight:800; color:#012169; letter-spacing:0.04em; text-align:center; padding:0 8px; line-height:1.2;">BANK OF<br>AMERICA</div>
+              <div style="width:18px; height:12px; margin-top:2px; display:flex; gap:2px; align-items:flex-end;">
+                <div style="width:4px; height:8px; background:#e31837; transform:skewX(-8deg);"></div>
+                <div style="width:4px; height:10px; background:#012169; transform:skewX(-8deg);"></div>
+                <div style="width:4px; height:12px; background:#e31837; transform:skewX(-8deg);"></div>
+              </div>
+              <div style="font-family:'DM Sans',sans-serif; font-size:5px; color:#555; letter-spacing:0.06em; text-transform:uppercase; margin-top:2px;">Mobile App Redesign</div>
+            </div>
+            <div class="work-info">
+              <div class="work-co">Bank of America — Product Design</div>
+              <div class="work-title-text">Banking at Your Fingertips — A Mobile App Redesign</div>
+              <div class="work-arrow" id="bofa-label">Expand ↓</div>
+            </div>
           </div>
-          <div class="work-info">
-            <div class="work-co">SMBC</div>
-            <div class="work-title-text">Why Healthcare-Biotech Is the Most Underfinanced Sector in Private Placement</div>
-            <div class="work-arrow" style="color:#2a3a2c;">In progress</div>
+          <!-- CHANGE THIS: rename your PDF to bofa-casestudy.pdf and upload to your GitHub repo -->
+          <div id="bofa-pdf" style="display:none; width:100%; margin-top:20px;">
+            <iframe
+              src="bofa-casestudy.pdf"
+              width="100%"
+              height="700px"
+              style="border:1px solid #2a3a2c; background:#111;"
+              title="Bank of America Case Study">
+            </iframe>
           </div>
         </div>
 
@@ -508,6 +328,18 @@
     document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
     document.getElementById('page-' + name).classList.add('active');
     btn.classList.add('active');
+  }
+
+  function togglePDF() {
+    const pdf = document.getElementById('bofa-pdf');
+    const label = document.getElementById('bofa-label');
+    if (pdf.style.display === 'none') {
+      pdf.style.display = 'block';
+      label.textContent = 'Collapse ↑';
+    } else {
+      pdf.style.display = 'none';
+      label.textContent = 'Expand ↓';
+    }
   }
 </script>
 

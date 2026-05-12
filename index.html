@@ -60,26 +60,11 @@
 
     .right {
       padding: 56px 64px;
-      display: flex; flex-direction: column;
-      justify-content: flex-start; gap: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 32px;
     }
-
-    .site-nav { display: flex; gap: 24px; }
-
-    .nav-link {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
-      color: #4a6a4e; cursor: pointer; transition: color 0.2s;
-      padding-bottom: 2px; border: none; border-bottom: 1px solid transparent;
-      background: none;
-    }
-    .nav-link:hover { color: #ddd8c4; }
-    .nav-link.active { color: #c8d4a0; border-bottom-color: #c8d4a0; }
-
-    .page { display: none; flex-direction: column; gap: 32px; }
-    .page.active { display: flex; }
-
-    .top-section { display: flex; flex-direction: column; gap: 32px; }
 
     .star-wrap { position: relative; width: 130px; height: 90px; display: inline-block; }
 
@@ -111,58 +96,13 @@
     .tl-co { font-family: 'DM Sans', sans-serif; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #4a6a4e; }
     .tl-role { font-family: 'EB Garamond', serif; font-size: 16px; font-style: italic; color: #8a9e8d; }
 
-    .work-list { display: flex; flex-direction: column; gap: 0; }
-
-    .work-item {
-      display: flex; align-items: center; gap: 28px;
-      padding: 24px 0; border-bottom: 1px solid #2a3a2c;
-      text-decoration: none; color: inherit;
-      transition: opacity 0.2s; cursor: pointer;
-    }
-    .work-item:first-child { border-top: 1px solid #2a3a2c; }
-    .work-item:hover { opacity: 0.65; }
-
-    .work-item-bofa {
-      display: flex; align-items: center; gap: 28px;
-      padding: 24px 0; border-bottom: 1px solid #2a3a2c;
-      border-top: 1px solid #2a3a2c;
-      text-decoration: none; color: inherit;
-      cursor: pointer;
-      flex-direction: column; align-items: flex-start;
-    }
-
-    .work-thumb {
-      width: 160px; height: 90px; flex-shrink: 0;
-      background: #0f0f0f; border: 1px solid #2a3a2c;
-      overflow: hidden; display: flex; position: relative;
-    }
-
-    .thumb-l {
-      width: 55%; background: #0a0a0a; padding: 10px 8px;
-      display: flex; flex-direction: column; justify-content: center; gap: 4px;
-      border-right: 2px solid #E31837;
-    }
-    .thumb-tag { font-family: 'DM Sans', sans-serif; font-size: 4.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #E31837; }
-    .thumb-title { font-family: 'DM Sans', sans-serif; font-size: 7px; font-weight: 700; color: #fff; line-height: 1.25; }
-    .thumb-r { width: 45%; background: #141414; padding: 8px 6px; display: flex; flex-direction: column; justify-content: flex-end; gap: 5px; }
-    .thumb-stat { display: flex; flex-direction: column; gap: 1px; padding-bottom: 5px; border-bottom: 1px solid rgba(255,255,255,0.06); }
-    .thumb-stat:last-child { border-bottom: none; padding-bottom: 0; }
-    .thumb-num { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 700; color: #E31837; line-height: 1; }
-    .thumb-label { font-family: 'DM Sans', sans-serif; font-size: 4px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.05em; }
-
-    .work-info { display: flex; flex-direction: column; gap: 5px; }
-    .work-co { font-family: 'DM Sans', sans-serif; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #4a6a4e; }
-    .work-title-text { font-family: 'EB Garamond', serif; font-size: 19px; font-style: italic; color: #ddd8c4; line-height: 1.3; }
-    .work-arrow { font-family: 'DM Sans', sans-serif; font-size: 11px; color: #4a6a4e; margin-top: 4px; }
-
     @media (max-width: 860px) {
       .site-wrap { grid-template-columns: 1fr; }
       .left { border-right: none; border-bottom: 1px solid #2a3a2c; padding: 32px 28px; flex-direction: row; flex-wrap: wrap; align-items: flex-start; gap: 16px; }
       .photo-circle { width: 120px; }
       .left-name { font-size: 20px; text-align: left; }
       .left-socials { margin-top: 0; }
-      .right { padding: 36px 28px; }
-      .work-thumb { width: 100px; height: 56px; }
+      .right { padding: 36px 28px; justify-content: flex-start; }
     }
   </style>
 </head>
@@ -183,152 +123,34 @@
   </aside>
 
   <main class="right">
-
-    <nav class="site-nav">
-      <button class="nav-link active" onclick="showPage('home', this)">Info</button>
-      <button class="nav-link" onclick="showPage('work', this)">Work</button>
-    </nav>
-
-    <!-- HOME PAGE -->
-    <div class="page active" id="page-home">
-      <div class="top-section">
-        <div class="star-wrap">
-          <span class="star">✦</span>
-          <span class="speck">✧</span>
-          <span class="speck">·</span>
-          <span class="speck">✶</span>
-          <span class="speck">·</span>
-          <span class="speck">✦</span>
-        </div>
-        <div class="headline">
-          <div class="headline-name">Finance & Creative Strategy</div>
-          <div class="headline-line">Design, Music, & Technology</div>
-        </div>
-        <div class="timeline">
-          <div class="tl-item">
-            <span class="tl-co">Amazon</span>
-            <span class="tl-role">Finance — Emerging Tech</span>
-          </div>
-          <div class="tl-item">
-            <span class="tl-co">Live Nation</span>
-            <span class="tl-role">Strategy — Music Festivals</span>
-          </div>
-          <div class="tl-item">
-            <span class="tl-co">SMBC</span>
-            <span class="tl-role">Investment Banking</span>
-          </div>
-        </div>
+    <div class="star-wrap">
+      <span class="star">✦</span>
+      <span class="speck">✧</span>
+      <span class="speck">·</span>
+      <span class="speck">✶</span>
+      <span class="speck">·</span>
+      <span class="speck">✦</span>
+    </div>
+    <div class="headline">
+      <div class="headline-name">Finance & Creative Strategy</div>
+      <div class="headline-line">Design, Music, & Technology</div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <span class="tl-co">Amazon</span>
+        <span class="tl-role">Sales & Marketing — Devices</span>
+      </div>
+      <div class="tl-item">
+        <span class="tl-co">Live Nation</span>
+        <span class="tl-role">Strategy — Music Festivals</span>
+      </div>
+      <div class="tl-item">
+        <span class="tl-co">SMBC</span>
+        <span class="tl-role">Investment Banking</span>
       </div>
     </div>
-
-    <!-- WORK PAGE -->
-    <div class="page" id="page-work">
-      <div class="work-list">
-
-        <!-- LIVE NATION -->
-        <a href="livenation-casestudy.html" class="work-item">
-          <div class="work-thumb">
-            <div class="thumb-l">
-              <div class="thumb-tag">Live Nation</div>
-              <div class="thumb-title">What 28 Festivals Taught Me About Growth</div>
-            </div>
-            <div class="thumb-r">
-              <div class="thumb-stat"><div class="thumb-num">28</div><div class="thumb-label">Festivals</div></div>
-              <div class="thumb-stat"><div class="thumb-num">$7M+</div><div class="thumb-label">Cost savings</div></div>
-              <div class="thumb-stat"><div class="thumb-num">2 YRS</div><div class="thumb-label">Strategy</div></div>
-            </div>
-          </div>
-          <div class="work-info">
-            <div class="work-co">Live Nation</div>
-            <div class="work-title-text">What 28 Music Festivals Taught Me About the Gap Between Gut Feel and Growth</div>
-            <div class="work-arrow">View case study →</div>
-          </div>
-        </a>
-
-        <!-- SMBC -->
-        <a href="smbc-casestudy.html" class="work-item">
-          <div class="work-thumb" style="background:#0a1a12; border-color:#1a2d1e;">
-            <div class="thumb-l" style="background:#071510; border-right-color:#00a651;">
-              <div class="thumb-tag" style="color:#00a651;">SMBC</div>
-              <div class="thumb-title">What Investment Banking Taught Me About Storytelling</div>
-            </div>
-            <div class="thumb-r" style="background:#0d1f17;">
-              <div class="thumb-stat"><div class="thumb-num" style="color:#00a651;">$85M+</div><div class="thumb-label">Deals</div></div>
-              <div class="thumb-stat"><div class="thumb-num" style="color:#00a651;">$50M</div><div class="thumb-label">Placement</div></div>
-              <div class="thumb-stat"><div class="thumb-num" style="color:#00a651;">3</div><div class="thumb-label">Sectors</div></div>
-            </div>
-          </div>
-          <div class="work-info">
-            <div class="work-co">Sumitomo Mitsui Banking Corporation</div>
-            <div class="work-title-text">What Investment Banking Taught Me About Storytelling</div>
-            <div class="work-arrow">View case study →</div>
-          </div>
-        </a>
-
-        <!-- BANK OF AMERICA -->
-        <div class="work-item-bofa" onclick="togglePDF()">
-          <div style="display:flex; align-items:center; gap:28px; width:100%;">
-            <div class="work-thumb" style="background:linear-gradient(135deg,#d6e8f5 0%,#eaf4fb 100%); border-color:#c8dde8; align-items:center; justify-content:center; flex-direction:column; gap:4px; overflow:hidden; position:relative;">
-              <div style="font-family:'DM Sans',sans-serif; font-size:8px; font-weight:800; color:#012169; letter-spacing:0.04em; text-align:center; padding:0 8px; line-height:1.2;">BANK OF<br>AMERICA</div>
-              <div style="width:18px; height:12px; margin-top:2px; display:flex; gap:2px; align-items:flex-end;">
-                <div style="width:4px; height:8px; background:#e31837; transform:skewX(-8deg);"></div>
-                <div style="width:4px; height:10px; background:#012169; transform:skewX(-8deg);"></div>
-                <div style="width:4px; height:12px; background:#e31837; transform:skewX(-8deg);"></div>
-              </div>
-              <div style="font-family:'DM Sans',sans-serif; font-size:5px; color:#555; letter-spacing:0.06em; text-transform:uppercase; margin-top:2px;">Mobile App Redesign</div>
-            </div>
-            <div class="work-info">
-              <div class="work-co">Bank of America</div>
-              <div class="work-title-text">How Digital Design Can Rebuild Banking Relationships</div>
-              <div class="work-arrow" id="bofa-label">View UI/UX case study ↓</div>
-            </div>
-          </div>
-          <div id="bofa-pdf" style="display:none; width:100%; margin-top:20px;">
-            <img src="bofa-casestudy.png" style="width:100%; height:auto; display:block; border:1px solid #2a3a2c;" alt="Bank of America Case Study" />
-          </div>
-        </div>
-
-      </div>
-    </div>
-
   </main>
 </div>
-
-<script>
-  function showPage(name, btn) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
-    document.getElementById('page-' + name).classList.add('active');
-    btn.classList.add('active');
-    // update URL cleanly without index.html
-    const url = name === 'work' ? '/#work' : '/';
-    history.pushState(null, '', url);
-  }
-
-  function togglePDF() {
-    const pdf = document.getElementById('bofa-pdf');
-    const label = document.getElementById('bofa-label');
-    if (pdf.style.display === 'none') {
-      pdf.style.display = 'block';
-      label.textContent = 'Collapse ↑';
-    } else {
-      pdf.style.display = 'none';
-      label.textContent = 'View UI/UX case study ↓';
-    }
-  }
-
-  // Handle direct URL routing — opens Work tab if URL is /#work or /work
-  (function() {
-    const hash = window.location.hash;
-    const path = window.location.pathname;
-    if (hash === '#work' || path === '/work' || path === '/work/') {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
-      document.getElementById('page-work').classList.add('active');
-      document.querySelector('[onclick*="work"]').classList.add('active');
-    }
-  })();
-</script>
 
 </body>
 </html>

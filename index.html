@@ -7,7 +7,7 @@
   <link rel="canonical" href="https://poojap.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@200;300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@200;300;400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -104,6 +104,48 @@
       .left-socials { margin-top: 0; }
       .right { padding: 36px 28px; justify-content: flex-start; }
     }
+  
+    .topnav{display:flex;gap:22px}
+    .topnav a{font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#6a9070;padding-bottom:2px;border-bottom:1px solid transparent}
+    .topnav a.on{color:#c8d4a0;border-color:#c8d4a0}
+    .page{display:none;flex-direction:column;gap:32px}.page.on{display:flex}
+    a.tl-item:hover .tl-role{color:#c8d4a0}
+    .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
+    .card{border:1px solid #2a3a2c;border-radius:8px;overflow:hidden;transition:.2s;display:block}
+    .card:hover{border-color:#6a9070;transform:translateY(-2px)}
+    .th{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;font:800 26px 'Barlow Condensed',sans-serif;text-transform:uppercase;text-align:center;line-height:1}
+    .cm{padding:12px 14px;display:flex;flex-direction:column}
+  
+    .deck{position:fixed;inset:0;z-index:50;background:#111;display:none;font-family:'Barlow Condensed',sans-serif;overflow:hidden}
+    .deck.on{display:block}
+    .deck .slide-wrapper{display:none}.deck .slide-wrapper.active{display:block}
+    .deck .slide{height:100vh}
+    .dback{position:fixed;top:20px;left:24px;z-index:200;font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.65);border:1px solid rgba(255,255,255,.3);padding:8px 14px;border-radius:20px}
+    .dback:hover{background:var(--a);border-color:var(--a)}
+    .dnav{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:16px;background:rgba(0,0,0,.7);padding:10px 20px;border-radius:40px;border:1px solid rgba(255,255,255,.15);z-index:200;color:#fff;font-family:'DM Sans',sans-serif;font-size:12px}
+    .dnav button{background:none;border:1px solid rgba(255,255,255,.3);color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer}
+    .dnav button:hover{background:var(--a);border-color:var(--a)}.dnav button:disabled{opacity:.3;cursor:default}
+    .deck .slide{width:100%;height:100vh;position:relative;display:flex;flex-direction:column;justify-content:center;padding:6% 8%;overflow:hidden}
+    .deck .bg-dark{background:var(--dark);color:#fff}
+    .deck .bg-light{background:var(--light);color:var(--ink)}
+    .deck .bg-accent{background:var(--a);color:#fff}
+    .deck .kicker{font-family:'DM Sans',sans-serif;font-size:.9vw;letter-spacing:.18em;text-transform:uppercase;opacity:.65;margin-bottom:2.2vw}
+    .deck .big{font-size:7.2vw;font-weight:800;line-height:.92;text-transform:uppercase}
+    .deck .big em,.deck .h em{font-style:normal;color:var(--a)}
+    .deck .bg-accent .big em,.deck .bg-accent .h em{color:inherit;text-decoration:underline}
+    .deck .h{font-size:4.6vw;font-weight:800;line-height:.98;text-transform:uppercase;margin-bottom:2.4vw}
+    .deck .p{font-family:'DM Sans',sans-serif;font-size:1.35vw;line-height:1.55;max-width:56vw;opacity:.88}
+    .deck .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:2vw;margin-top:1vw}
+    .deck .col{border-top:3px solid var(--a);padding-top:1vw}
+    .deck .col b{display:block;font-size:2vw;font-weight:700;text-transform:uppercase;margin-bottom:.5vw}
+    .deck .col span{font-family:'DM Sans',sans-serif;font-size:1.1vw;line-height:1.5;opacity:.85}
+    .deck .tag{position:absolute;top:4%;right:4%;font-family:'DM Sans',sans-serif;font-size:.8vw;letter-spacing:.12em;text-transform:uppercase;border:1px solid currentColor;padding:.3vw .8vw;border-radius:2vw;opacity:.8}
+    .deck .author{position:absolute;bottom:4%;left:8%;font-family:'DM Sans',sans-serif;font-size:.8vw;letter-spacing:.1em;text-transform:uppercase;opacity:.35}
+    .deck .sw{display:flex;gap:.6vw;margin:1vw 0 1.6vw}
+    .deck .sw i{width:7vw;height:7vw;border-radius:.5vw;display:block}
+    .deck .shelf{display:flex;gap:1vw;align-items:flex-end;height:14vw;max-width:56vw;margin:1vw 0}
+    .deck .shelf i{flex:1;background:var(--dark);border-radius:.4vw .4vw 0 0}
+    .deck .shelf i.hero{background:var(--a)}
   </style>
 </head>
 <body>
@@ -123,9 +165,8 @@
   </aside>
 
   <main class="right">
-    <nav>
-      <span style="font-family:'DM Sans',sans-serif; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#c8d4a0; padding-bottom:2px; border-bottom:1px solid #c8d4a0;">Info</span>
-    </nav>
+    <nav class="topnav"><a href="/" class="on" data-p="info">Info</a><a href="/#work" data-p="work">Work</a></nav>
+    <div id="page-info" class="page on">
     <div class="star-wrap">
       <span class="star">✦</span>
       <span class="speck">✧</span>
@@ -135,25 +176,62 @@
       <span class="speck">✦</span>
     </div>
     <div class="headline">
-      <div class="headline-name">Finance & Creative Strategy</div>
-      <div class="headline-line">Design, Music, & Technology</div>
+      <div class="headline-name">Business & Creative Strategy</div>
+      <div class="headline-line">NYC Music Producer & Tech Enthusiast</div>
     </div>
     <div class="timeline">
-      <div class="tl-item">
-        <span class="tl-co">Amazon</span>
-        <span class="tl-role">Sales & Marketing — Devices</span>
-      </div>
-      <div class="tl-item">
-        <span class="tl-co">Live Nation</span>
-        <span class="tl-role">Strategy — Music Festivals</span>
-      </div>
-      <div class="tl-item">
-        <span class="tl-co">SMBC</span>
-        <span class="tl-role">Investment Banking — Biotech</span>
+      <a class="tl-item" href="/#amazon"><span class="tl-co">Amazon</span><span class="tl-role">Sales & Marketing — Devices</span></a>
+      <a class="tl-item" href="https://www.behance.net/poojapisharody" target="_blank" rel="noopener"><span class="tl-co">Freelance</span><span class="tl-role">Designer</span></a>
+      <a class="tl-item" href="/#livenation"><span class="tl-co">Live Nation</span><span class="tl-role">Strategy — Music Festivals</span></a>
+      <div class="tl-item"><span class="tl-co">SMBC</span><span class="tl-role">Investment Banking — Biotech</span></div>
+    </div>
+    </div>
+    <div id="page-work" class="page">
+      <div class="headline-line">Projects</div>
+      <div class="cards">
+        <a class="card" href="/#amazon"><div class="th" style="background:#fff;color:#232f3e">Devices where<br>people meet them</div><div class="cm"><span class="tl-co">Amazon</span><span class="tl-role">Creative strategy, offline retail</span></div></a>
+        <a class="card" href="/#livenation"><div class="th" style="background:#E31837;color:#fff">The Fan<br>Is the Brief</div><div class="cm"><span class="tl-co">Live Nation · C3</span><span class="tl-role">Creative strategy, festivals</span></div></a>
       </div>
     </div>
   </main>
 </div>
 
+
+<div class="deck" id="deck-livenation" style="--a:#E31837;--dark:#0b0b0b;--light:#f2ede4;--ink:#111">
+<a class="dback" href="/#work">← Work</a>
+<div class="slide-wrapper"><div class="slide bg-dark"><div class="kicker">Creative strategy · Live Nation / C3 Presents</div><div class="big">The Fan<br>Is the <em>Brief</em></div><p class="p" style="margin-top:2vw">A creative strategy lens on 28 music festivals.</p><div class="author">Pooja Pisharody</div></div></div>
+<div class="slide-wrapper"><div class="slide bg-accent"><div class="kicker">01 · The cultural moment</div><div class="h">Festivals aren't events anymore.<br>They're <em>identity</em>.</div><p class="p">Fans plan outfits, squads and feeds months before a lineup drops. The festival is a story people tell about themselves.</p><div class="author">Pooja Pisharody</div></div></div>
+<div class="slide-wrapper"><div class="slide bg-dark"><div class="kicker">02 · The brief</div><div class="h">Objective · <em>Audience</em> · Tension</div><div class="cols"><div class="col"><b>Objective</b><span>Grow fan loyalty across festivals.</span></div><div class="col"><b>Audience</b><span>Gen Z and millennial fans who treat festivals as part of who they are.</span></div><div class="col"><b>Tension</b><span>Build one fan relationship without flattening what makes each festival feel different.</span></div></div><div class="author">Pooja Pisharody</div></div></div>
+<div class="slide-wrapper"><div class="slide bg-light"><div class="kicker">03 · What I built, through a creative lens</div><div class="h">Commercial work<br>as <em>fan experience</em></div><div class="cols"><div class="col"><b>Ticket tiers</b><span>Pricing structured as access and value for different kinds of fans.</span></div><div class="col"><b>Audience programs</b><span>Influencer packages and secondary-market positioning.</span></div><div class="col"><b>Partnerships</b><span>City parks and scalable beverage brand partnerships.</span></div></div><div class="author">Pooja Pisharody</div></div></div>
+<div class="slide-wrapper"><div class="slide bg-dark"><div class="tag">Speculative concept work</div><div class="kicker">04 · Visual system</div><div class="h">Palette · Type · <em>Mood</em></div><div class="sw"><i style="background:#E31837"></i><i style="background:#f4e04d"></i><i style="background:#2b6cff"></i><i style="background:#f2ede4"></i><i style="background:#222;border:1px solid #444"></i></div><p class="p">Poster-bold condensed type, high-contrast color, one accent per festival. Replace with your moodboard images.</p><div class="author">Pooja Pisharody</div></div></div>
+<div class="slide-wrapper"><div class="slide bg-accent"><div class="tag">Speculative concept work</div><div class="kicker">05 · The concept I'd run</div><div class="big" style="font-size:6vw">One Fan ID.<br>Every Festival.</div><p class="p" style="margin-top:2vw">A cross-festival identity that carries a fan's history, badges and perks from one festival to the next.</p><div class="author">Pooja Pisharody</div></div></div>
+<div class="slide-wrapper"><div class="slide bg-dark"><div class="kicker">06 · Point of view</div><div class="big" style="font-size:5.6vw">Data tells you <em>who</em>.<br>Creative tells you <em>why</em>.</div><p class="p" style="margin-top:2vw">poojap.com</p><div class="author">Pooja Pisharody</div></div></div>
+<div class="dnav"><button class="dp">←</button><span class="dc"></span><button class="dn">→</button></div>
+</div>
+<div class="deck" id="deck-amazon" style="--a:#ff9900;--dark:#232f3e;--light:#ffffff;--ink:#111">
+<a class="dback" href="/#work">← Work</a>
+<div class="slide-wrapper"><div class="slide bg-light"><div class="kicker">Creative strategy · Amazon Devices</div><div class="big">Devices where<br>people <em>actually</em><br>meet them</div><p class="p" style="margin-top:2vw">Creative strategy for offline retail.</p><div class="author">Pooja Pisharody</div></div></div>
+<div class="slide-wrapper"><div class="slide bg-dark"><div class="kicker">01 · The problem</div><div class="big"><em>5 seconds</em><br>on a shelf</div><p class="p" style="margin-top:2vw">A device has moments to explain itself next to a dozen others.</p><div class="author">Pooja Pisharody</div></div></div>
+<div class="slide-wrapper"><div class="slide bg-light"><div class="kicker">02 · The brief</div><div class="h">Make the <em>first look</em><br>do the selling</div><div class="cols"><div class="col"><b>Objective</b><span>Help a shopper understand a device without a salesperson.</span></div><div class="col"><b>Shopper</b><span>Browsing, comparing and short on time.</span></div><div class="col"><b>Tension</b><span>Simple enough to grasp, trustworthy enough to buy.</span></div></div><div class="author">Pooja Pisharody</div></div></div>
+<div class="slide-wrapper"><div class="slide bg-accent"><div class="kicker">03 · Strategy lens</div><div class="h">Show it.<br>Don't spec it.</div><div class="cols"><div class="col"><b>Story over specs</b><span>Lead with what it does for someone.</span></div><div class="col"><b>Demo over copy</b><span>Let the product explain itself.</span></div><div class="col"><b>Consistency</b><span>One look across every retailer.</span></div></div><div class="author">Pooja Pisharody</div></div></div>
+<div class="slide-wrapper"><div class="slide bg-light"><div class="tag">Speculative concept work</div><div class="kicker">04 · Visual system</div><div class="h">One hero<br>per <em>fixture</em></div><div class="shelf"><i style="height:55%"></i><i class="hero" style="height:100%"></i><i style="height:70%"></i><i style="height:45%"></i><i style="height:80%"></i></div><p class="p">Shelf and endcap mockup. Replace with your own render.</p><div class="author">Pooja Pisharody</div></div></div>
+<div class="slide-wrapper"><div class="slide bg-dark"><div class="tag">Speculative concept work</div><div class="kicker">05 · The concept</div><div class="big" style="font-size:6vw">The in-store<br><em>launch moment</em></div><p class="p" style="margin-top:2vw">A live-demo endcap that turns launch day into something shoppers stop for.</p><div class="author">Pooja Pisharody</div></div></div>
+<div class="dnav"><button class="dp">←</button><span class="dc"></span><button class="dn">→</button></div>
+</div>
+<script>
+var cur=null,idx=0;
+function slides(){return cur?[].slice.call(cur.querySelectorAll('.slide-wrapper')):[]}
+function show(n){var S=slides();idx=Math.max(0,Math.min(S.length-1,n));S.forEach(function(s,k){s.classList.toggle('active',k===idx)});cur.querySelector('.dc').textContent=(idx+1)+' / '+S.length;cur.querySelector('.dp').disabled=idx===0;cur.querySelector('.dn').disabled=idx===S.length-1}
+function route(){var h=location.hash.slice(1),w=h==='work';
+document.getElementById('page-info').classList.toggle('on',!w);document.getElementById('page-work').classList.toggle('on',w);
+document.querySelectorAll('.topnav a').forEach(function(a){a.classList.toggle('on',(a.dataset.p==='work')===w)});
+document.querySelectorAll('.deck').forEach(function(d){d.classList.remove('on')});
+cur=document.getElementById('deck-'+h);if(cur){cur.classList.add('on');show(0)}}
+document.querySelectorAll('.topnav a').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();history.pushState(null,'',a.dataset.p==='work'?'/#work':'/');route()})});
+document.querySelectorAll('.dp').forEach(function(b){b.onclick=function(){show(idx-1)}});
+document.querySelectorAll('.dn').forEach(function(b){b.onclick=function(){show(idx+1)}});
+document.addEventListener('keydown',function(e){if(!cur)return;if(e.key==='ArrowRight'||e.key===' ')show(idx+1);else if(e.key==='ArrowLeft')show(idx-1);else if(e.key==='Escape')location.hash='work'});
+window.addEventListener('popstate',route);window.addEventListener('hashchange',route);route();
+</script>
 </body>
 </html>
